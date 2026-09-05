@@ -96,6 +96,13 @@ const TYPE_COPY: Record<string, TypeCopy> = {
     customization: ["Embossing on the front panel", "Metal badge with your logo", "Screen printing on the lining or strap"],
     moq: "50 pieces",
   },
+  "Laptop Backpack": {
+    description:
+      "A padded backpack sized for a 15-inch laptop, with a document sleeve, side pockets and a ventilated back panel. The piece a new joiner or a field team carries every day, which is what makes it worth putting a logo on.",
+    features: ["Padded laptop compartment sized for 15 inches", "Ventilated back panel and padded shoulder straps", "Zipped front organiser and twin side pockets", "Water-resistant textured fabric with metal-pull zips"],
+    customization: ["Screen printing on the front panel", "Embroidery on the front or side pocket", "Woven label stitched to the strap or panel"],
+    moq: "50 pieces",
+  },
   "Sling Bag": {
     description:
       "A compact cross-body bag in the same leather finish, sized for a tablet, documents and the things that travel between desks. A lighter gift than a laptop bag and an easier one to give across a whole team.",
@@ -272,6 +279,7 @@ const RAW: ReadonlyArray<
   ["Laptop Bag", "laptop-bag-tan-strap", "bags", "BG-02", "Laptop Bag", 1200, 1500, "portrait"],
   ["Sling Bag", "sling-bag-brown", "bags", "BG-03", "Sling Bag", 1200, 1500, "portrait"],
   ["Jute Carry Bag", "jute-carry-bag", "bags", "BG-04", "Jute Carry Bag", 1200, 1500, "portrait"],
+  ["Laptop Backpack", "laptop-backpack-black", "bags", "BG-05", "Laptop Backpack", 1200, 1500, "portrait"],
   ["Pen Stand", "pen-stand-desk", "desk-accessories", "DA-01", "Pen Stand", 1200, 1500, "portrait"],
   ["Acrylic Paperweight", "acrylic-paperweight", "desk-accessories", "DA-02", "Acrylic Paperweight", 1200, 1500, "portrait"],
   // Gift combos and pen-and-card sets from the 2026 gifting catalogue.

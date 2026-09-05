@@ -21,11 +21,27 @@ const read = (p) => readFileSync(join(root, p), "utf8");
 const SITE = "https://www.chandraandco.in";
 const today = new Date().toISOString().slice(0, 10);
 
-/** Product rows look like: ["Name", "slug", "category", "sku", …] */
+/**
+ * Product rows look like: ["Name", "slug", "category", "sku", …]
+ *
+ * This used to require the category to end in "-pens", which was true of every
+ * range on the day it was written. By the time the gift sets, bags, keychains,
+ * mobile stands and desk pieces were added, thirty products — every non-pen
+ * item on the site — were being left out of the sitemap without anything
+ * failing. The guard below counts the rows it matched against the rows that
+ * are actually there, so a shape it does not understand stops the build rather
+ * than quietly shortening the file again.
+ */
 function products() {
   const src = read("src/data/products.ts");
-  const rows = [...src.matchAll(/^\s*\["[^"]+", "([^"]+)", "([^"]+)-pens"/gm)];
-  if (rows.length < 20) throw new Error(`products.ts: found only ${rows.length} rows`);
+  const declared = [...src.matchAll(/^\s*\["[^"]+", "[^"]+", "[^"]+", /gm)].length;
+  const rows = [...src.matchAll(/^\s*\["[^"]+", "([^"]+)", "([a-z-]+)", /gm)];
+  if (rows.length !== declared) {
+    throw new Error(
+      `products.ts: matched ${rows.length} slugs but the file declares ${declared} rows`,
+    );
+  }
+  if (rows.length < 100) throw new Error(`products.ts: found only ${rows.length} rows`);
   return rows.map((m) => m[1]);
 }
 
