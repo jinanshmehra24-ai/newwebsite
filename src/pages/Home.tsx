@@ -47,41 +47,59 @@ export default function Home() {
   return (
     <div ref={root}>
       {/* ---------------------------------------------------------------- Hero */}
-      {/* One layout, at every width.
-          It used to be two. Below 1280px the headline sat under the picture
-          and a translucent white bar floated on top of it carrying the two
-          links; above 1280px the whole text block moved onto the photograph
-          inside a second white panel. Neither was designed so much as
-          negotiated, and a frosted white box laid over a photograph is the
-          most template-looking device on the web.
-          The photograph is now left alone — no panels, no pills, not even the
-          controls — and the words are given the paper below it, where they can
-          be as large as they deserve without fighting a picture for contrast.
-          The eye reads the product, then the promise. */}
-      <section className="bg-paper">
-        <HeroCarousel />
+      <section className="relative isolate bg-paper">
+        <div className="relative">
+          <HeroCarousel />
 
-        <div className="mx-auto max-w-[1600px] px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-16">
-          <div className="grid gap-9 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-20">
-            <div className="header-in">
-              <span aria-hidden className="block h-px w-9 origin-left bg-gold-500" />
-              <p className="eyebrow mt-4">Corporate Gifting · New Delhi</p>
-              <h1 className="mt-4 text-[clamp(2.5rem,6vw,5.25rem)] leading-[1.02] text-ink">
+          {/* The two ways through the site sit inside the picture. Measured
+              across the pens' own band the frame is dark planting to 14%, bare
+              to 23%, and only then the first pen, so from 640px a stacked panel
+              held to the left edge rests on that planting and grazes the black
+              barrel rather than covering the arrangement. A phone has no such
+              margin — two readable labels there span half the frame whatever
+              you do — so the same block lies along the foot instead. It stands
+              down at 1280px, where the full block takes over. */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-end sm:items-center">
+            <div className="mx-auto w-full max-w-[1600px] sm:pl-24 sm:pr-8">
+              <div className="pointer-events-auto flex w-full items-center gap-x-6 bg-white/90 px-5 py-2.5 backdrop-blur-[2px] sm:inline-flex sm:w-auto sm:flex-col sm:items-start sm:gap-3 sm:px-6 sm:py-5 xl:hidden">
+                <ButtonLink to="/products" variant="link">
+                  Explore Products
+                </ButtonLink>
+                <ButtonLink to="/quote" variant="link">
+                  Request a Quote
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* From 1280px the type moves over the picture on its own pale ground —
+            a gradient wash could not serve both ends, since the pens run from
+            white to black and any veil strong enough to hold the words drained
+            the colour out of them. The panel keeps the same left edge and the
+            same centred height as the smaller one it replaces, so it clears the
+            wordmark entirely and stays in view on a wide monitor, where the foot
+            of the frame would not. */}
+        <div className="xl:absolute xl:inset-y-0 xl:left-0 xl:right-0 xl:z-10 xl:flex xl:items-center">
+          <div className="mx-auto w-full max-w-[1600px] px-5 py-10 sm:px-8 xl:py-0 xl:pl-24">
+            <div className="max-w-xl xl:max-w-sm xl:bg-white/90 xl:px-8 xl:py-8 xl:backdrop-blur-[2px]">
+              <p className="text-[0.625rem] uppercase tracking-[0.2em] text-muted">
+                Corporate Gifting · New Delhi
+              </p>
+              <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
                 Put Your Name in Their Hands.
               </h1>
-            </div>
-
-            {/* Held to the baseline of the headline rather than its top, so the
-                two columns meet along one line instead of floating apart. */}
-            <div className="header-meta lg:pb-2">
-              <p className="max-w-md text-[0.9375rem] leading-[1.9] text-muted">
+              <p className="mt-4 max-w-md text-[0.875rem] leading-[1.85] text-muted">
                 Corporate gifts branded for you and delivered where you need
                 them — so the people you are trying to reach carry your name
                 every day.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <ButtonLink to="/products">Explore Products</ButtonLink>
+              {/* The panel on the picture carries these below 1280px. */}
+              <div className="mt-7 hidden flex-wrap items-center gap-x-8 gap-y-3 xl:flex">
+                <ButtonLink to="/products" variant="link">
+                  Explore Products
+                </ButtonLink>
                 <ButtonLink to="/quote" variant="link">
                   Request a Quote
                 </ButtonLink>
@@ -102,7 +120,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="mt-16 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c, i) => (
             <div
               key={c.slug}
@@ -129,7 +147,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="mt-16 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((p, i) => (
               <div
                 key={p.slug}

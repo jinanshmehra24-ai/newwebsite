@@ -87,7 +87,7 @@ export default function Navbar() {
           <div className="absolute right-5 flex items-center gap-3 sm:right-8">
             <Link
               to="/quote"
-              className="hidden items-center py-2 text-[0.6875rem] uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink sm:inline-flex"
+              className="hidden text-[0.6875rem] uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink sm:inline-flex"
             >
               Request a Quote
             </Link>

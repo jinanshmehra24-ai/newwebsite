@@ -36,7 +36,7 @@ export default function Categories() {
       />
 
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
-        <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c, i) => {
             const count = products.filter((p) => p.category === c.slug).length;
             return (

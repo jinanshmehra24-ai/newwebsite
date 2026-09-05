@@ -26,14 +26,14 @@ const VARIANTS = {
      over it from the left on hover, so the change reads as a stroke being made
      rather than a colour being swapped. */
   link:
-    "relative border-b border-ink/40 pb-1.5 pt-1.5 text-ink " +
+    "relative border-b border-ink/40 pb-1 text-ink " +
     "after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:scale-x-0 " +
     "after:bg-gold-500 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] " +
     "hover:after:scale-x-100 focus-visible:after:scale-x-100",
   ghostLight:
     "border border-white/45 px-10 py-4 text-white hover:bg-white hover:text-ink",
   linkLight:
-    "relative border-b border-white/50 pb-1.5 pt-1.5 text-white " +
+    "relative border-b border-white/50 pb-1 text-white " +
     "after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:scale-x-0 " +
     "after:bg-white after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] " +
     "hover:after:scale-x-100 focus-visible:after:scale-x-100",

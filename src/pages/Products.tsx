@@ -123,7 +123,7 @@ export default function Products() {
             No products match that search.
           </p>
         ) : (
-          <div className="mt-6 grid items-start gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-6 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.slice(0, shown).map((p, i) => (
               <div
                 key={p.slug}
@@ -180,7 +180,7 @@ function FilterChip({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`shrink-0 whitespace-nowrap border-b pb-1.5 pt-1.5 text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-300 ${
+      className={`shrink-0 whitespace-nowrap border-b pb-1.5 text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-300 ${
         active
           ? "border-ink text-ink"
           : "border-transparent text-muted hover:border-ink/30 hover:text-ink"

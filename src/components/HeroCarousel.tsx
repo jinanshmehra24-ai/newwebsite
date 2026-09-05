@@ -115,124 +115,108 @@ export default function HeroCarousel() {
   }, [advance, paused]);
 
   return (
-    <div>
-      {/* The photograph, and nothing else on it.
-          It used to carry four floating panels — two arrow buttons, a range
-          chip and a dot row, each on its own frosted white ground, because the
-          pictures run from near-white marble to black leather and anything
-          bare would vanish into one or the other. The answer was not a better
-          veil: it was to stop putting controls on the photograph. They sit on
-          the paper underneath now, where they have contrast for free and the
-          picture is left to be a picture. */}
-      <div
-        ref={stage}
-        className="hero-stage relative overflow-hidden"
-        onPointerMove={drift}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => {
-          setPaused(false);
-          settle();
-        }}
-      >
-        {/* The first slide sets the height; the rest are laid over it, so the
-            section never jumps as the photographs change. */}
-        {SLIDES.map((slide, i) => (
-          <img
-            key={slide.name}
-            src={`/editorial/${slide.name}-1536.webp`}
-            srcSet={`/editorial/${slide.name}-900.webp 900w, /editorial/${slide.name}-1536.webp 1536w`}
-            sizes="100vw"
-            alt={i === index ? slide.alt : ""}
-            aria-hidden={i !== index}
-            width={slide.width}
-            height={slide.height}
-            fetchPriority={i === 0 ? "high" : "low"}
-            loading={i === 0 ? "eager" : "lazy"}
-            decoding="async"
-            style={{ objectPosition: slide.position }}
-            /* Sized by width, never by viewport height: with cover, a short
-               wide window crops more, which is what cut the previous hero. */
-            className={`hero-photo aspect-[5/4] w-full object-cover transition-opacity duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:mx-auto sm:aspect-[7/4] sm:max-w-[1600px] ${
-              i === index ? "opacity-100" : "opacity-0"
-            } ${i === 0 ? "" : "absolute inset-0 h-full"}`}
-          />
-        ))}
+    <div
+      ref={stage}
+      className="hero-stage relative overflow-hidden"
+      onPointerMove={drift}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => {
+        setPaused(false);
+        settle();
+      }}
+    >
+      {/* The first slide sets the height; the rest are laid over it, so the
+          section never jumps as the photographs change. */}
+      {SLIDES.map((slide, i) => (
+        <img
+          key={slide.name}
+          src={`/editorial/${slide.name}-1536.webp`}
+          srcSet={`/editorial/${slide.name}-900.webp 900w, /editorial/${slide.name}-1536.webp 1536w`}
+          sizes="100vw"
+          alt={i === index ? slide.alt : ""}
+          aria-hidden={i !== index}
+          width={slide.width}
+          height={slide.height}
+          fetchPriority={i === 0 ? "high" : "low"}
+          loading={i === 0 ? "eager" : "lazy"}
+          decoding="async"
+          style={{ objectPosition: slide.position }}
+          /* Sized by width, never by viewport height: with cover, a short wide
+             window crops more, which is what cut the previous hero. */
+          className={`hero-photo aspect-[5/4] w-full object-cover transition-opacity duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:mx-auto sm:aspect-[7/4] sm:max-w-[1600px] ${
+            i === index ? "opacity-100" : "opacity-0"
+          } ${i === 0 ? "" : "absolute inset-0 h-full"}`}
+        />
+      ))}
 
-        {/* The photograph is the advertisement, so it should also be the way
-            in: whichever range is on screen, the picture leads to it. */}
-        {range && (
-          <Link
-            to={`/categories/${range.slug}`}
-            aria-label={`See the ${range.name}`}
-            className="absolute inset-0 z-[1]"
-          />
-        )}
+      {/* The photograph is the advertisement, so it should also be the way in:
+          whichever range is on screen, the picture leads to it. It sits under
+          the controls and under the type block, both of which have their own
+          links, so nothing is nested inside anything else. */}
+      {range && (
+        <Link
+          to={`/categories/${range.slug}`}
+          aria-label={`See the ${range.name}`}
+          className="absolute inset-0 z-[1]"
+        />
+      )}
+
+      {/* One arrow to each side, at the mid-height of the frame. The block of
+          calls to action is set in far enough to clear the back arrow — see the
+          padding on it in Home — because at 640px and up the two share that
+          left edge and the arrow was sitting on the first letter of "Explore
+          Products". They keep a pale ground of their own, since the photographs
+          behind them run from near-white marble to dark leather and a bare
+          arrow would vanish into one or the other. */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-20 flex items-center justify-between px-3 sm:px-6">
+        {[
+          { step: -1, label: "Previous photograph", d: "M15 5l-7 7 7 7" },
+          { step: 1, label: "Next photograph", d: "M9 5l7 7-7 7" },
+        ].map(({ step, label, d }) => (
+          <button
+            key={label}
+            type="button"
+            onClick={() => go(step)}
+            aria-label={label}
+            className="pointer-events-auto grid h-9 w-9 place-items-center rounded-full bg-white/85 text-ink backdrop-blur-[2px] transition-colors duration-300 hover:bg-white sm:h-11 sm:w-11"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden
+            >
+              <path
+                d={d}
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        ))}
       </div>
 
-      {/* The control rail. A hairline, the range currently shown, the dots and
-          the two arrows — all in ink on paper, no chrome anywhere. */}
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-        <div className="flex items-center justify-between gap-6 border-b border-line py-4">
-          <div className="flex min-w-0 items-center gap-5">
-            {range && (
-              <Link
-                to={`/categories/${range.slug}`}
-                className="truncate py-2 text-[0.6875rem] uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:text-ink"
-              >
-                {range.name}
-              </Link>
-            )}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex flex-col items-center gap-3 pb-16 sm:pb-7">
+        <span className="pointer-events-none rounded-full bg-white/85 px-4 py-1.5 text-[0.625rem] uppercase tracking-[0.16em] text-ink backdrop-blur-[2px]">
+          {range ? range.name : ""}
+        </span>
 
-            <div className="flex items-center gap-2">
-              {SLIDES.map((slide, i) => (
-                <button
-                  key={slide.name}
-                  type="button"
-                  onClick={() => setIndex(i)}
-                  aria-label={`Show photograph ${i + 1} of ${SLIDES.length}`}
-                  aria-current={i === index}
-                  /* The mark is a hairline; the button is not. Without the
-                     padding the target would be one pixel tall, which is a
-                     thing to look at rather than a thing to press. */
-                  className="group/dot flex h-9 min-w-6 items-center justify-center px-1"
-                >
-                  <span
-                    aria-hidden
-                    className={`block h-px transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                      i === index
-                        ? "w-9 bg-ink"
-                        : "w-4 bg-line group-hover/dot:bg-muted"
-                    }`}
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1">
-            {[
-              { step: -1, label: "Previous photograph", d: "M15 5l-7 7 7 7" },
-              { step: 1, label: "Next photograph", d: "M9 5l7 7-7 7" },
-            ].map(({ step, label, d }) => (
-              <button
-                key={label}
-                type="button"
-                onClick={() => go(step)}
-                aria-label={label}
-                className="grid h-9 w-9 place-items-center text-muted transition-colors duration-300 hover:text-ink"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <path
-                    d={d}
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            ))}
-          </div>
+        <div className="pointer-events-auto flex items-center gap-2.5 rounded-full bg-white/85 px-4 py-2.5 backdrop-blur-[2px]">
+          {SLIDES.map((slide, i) => (
+            <button
+              key={slide.name}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`Show photograph ${i + 1} of ${SLIDES.length}`}
+              aria-current={i === index}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === index ? "w-6 bg-ink" : "w-1.5 bg-ink/30 hover:bg-ink/60"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>
