@@ -4,8 +4,6 @@ import { whyPoints, brandingMethods } from "../data/content";
 import { siteConfig } from "../config/site";
 import { useReveal } from "../lib/useReveal";
 import PageHeader from "../components/PageHeader";
-import { categories } from "../data/categories";
-import { products } from "../data/products";
 import { useSeo } from "../lib/useSeo";
 
 export default function About() {
@@ -25,12 +23,6 @@ export default function About() {
         eyebrow={"About Us"}
         title={"The Gift Carries Your Name, Not Ours."}
         intro="We supply corporate gifts to businesses across India and put their branding on them — from a single dealer campaign to a company-wide employee gift. What leaves here carries the client's name and nothing else."
-        facts={[
-          { label: "Based in", value: "New Delhi" },
-          { label: "We supply", value: "Across India" },
-          { label: "Ranges", value: String(categories.length) },
-          { label: "Pieces", value: String(products.length) },
-        ]}
         note={
           "Your logo goes on the gift. Ours does not go anywhere on it, and we do not put your order on our own shelf for someone else to see."
         }

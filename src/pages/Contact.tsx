@@ -24,11 +24,6 @@ export default function Contact() {
         intro={
           "Tell us the product, the quantity and the occasion — we'll come back with options, branding methods and pricing."
         }
-        facts={[
-          { label: "Call", value: siteConfig.contact.phoneDisplay },
-          { label: "Hours", value: "Mon – Sat, 10:00 – 19:00" },
-          { label: "Office", value: "Rajapuri, New Delhi" },
-        ]}
         note={
           "WhatsApp is usually the quickest way to reach us — send a photograph of what you have in mind and we will tell you what it takes."
         }

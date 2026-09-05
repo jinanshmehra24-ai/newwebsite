@@ -4,7 +4,6 @@ import ContactOptions from "../components/ContactOptions";
 import { categories } from "../data/categories";
 import { useReveal } from "../lib/useReveal";
 import PageHeader from "../components/PageHeader";
-import { smallestOrder } from "../data/products";
 import { useSeo } from "../lib/useSeo";
 
 const STEPS = [
@@ -51,11 +50,6 @@ export default function Quote() {
         eyebrow="Request a Quote"
         title="Tell Us What You Need."
         intro="No pricing is published online — every quote is built against your quantity, product selection and branding method."
-        facts={[
-          { label: "Smallest order", value: smallestOrder() },
-          { label: "Branding", value: "Laser, screen, UV" },
-          { label: "You send", value: "Logo and quantity" },
-        ]}
         note={
           "Send the logo in whatever form you have it. If it will not hold at the size of the piece, we will say so and redraw it before anything is printed."
         }

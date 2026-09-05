@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import CTASection from "../components/CTASection";
 import { ArrowRight } from "../components/ui";
-import { guides, guidesByDate } from "../data/guides";
+import { guidesByDate } from "../data/guides";
 import { useReveal } from "../lib/useReveal";
 import PageHeader from "../components/PageHeader";
 import { useSeo } from "../lib/useSeo";
@@ -12,19 +12,6 @@ const readable = (iso: string) =>
     month: "long",
     year: "numeric",
   });
-
-/* Read off the guides themselves rather than typed in, so the figure in the
-   header cannot contradict the times printed on the cards below it. */
-const typicalRead = Math.round(
-  guides.reduce((sum, g) => sum + g.readingMinutes, 0) / guides.length,
-);
-
-/* The most recent piece, so the rail says how current the writing is rather
-   than listing the subjects — which ran too long for the cell and was cut
-   mid-word on a narrow screen. */
-const lastUpdated = new Date(
-  guidesByDate()[0]?.published ?? Date.now(),
-).toLocaleDateString("en-IN", { month: "long", year: "numeric" });
 
 export default function Guides() {
   const root = useReveal<HTMLDivElement>();
@@ -46,11 +33,6 @@ export default function Guides() {
         intro={
           "The questions that come before the catalogue — which branding method suits which barrel, how many pieces an event really needs, and what artwork survives at pen size."
         }
-        facts={[
-          { label: "Guides", value: String(guides.length) },
-          { label: "Typical read", value: `${typicalRead} min` },
-          { label: "Last added", value: lastUpdated },
-        ]}
         note={
           "These are the questions we are asked most often. If yours is not answered here, send it across and we will answer it directly."
         }

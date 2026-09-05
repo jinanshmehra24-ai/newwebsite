@@ -4,7 +4,7 @@ import ProductCard from "../components/ProductCard";
 import CTASection from "../components/CTASection";
 import MoreRangeNotice from "../components/MoreRangeNotice";
 import { categories, type CategorySlug } from "../data/categories";
-import { byShape, products, smallestOrder } from "../data/products";
+import { byShape, products } from "../data/products";
 import { useReveal } from "../lib/useReveal";
 import PageHeader from "../components/PageHeader";
 import { useSeo } from "../lib/useSeo";
@@ -57,12 +57,6 @@ export default function Products() {
         intro={
           "Every piece below is drawn from our current corporate gifting and promotional catalogue. Pricing is quoted against your quantity and branding requirement."
         }
-        facts={[
-          { label: "Pieces shown", value: String(products.length) },
-          { label: "Ranges", value: String(categories.length) },
-          { label: "Smallest order", value: smallestOrder() },
-          { label: "Branding", value: "Laser, screen, UV" },
-        ]}
         note={
           "This is a part of what we hold, not all of it. If what you have in mind is not on the page, ask — we will send photographs of it."
         }

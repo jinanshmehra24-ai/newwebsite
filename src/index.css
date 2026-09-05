@@ -65,6 +65,12 @@
      Uppercase is now spent in one place only: the small eyebrow label. The
      headings are set in the serif's own case, at its own spacing, and given
      the size to carry a page on their own. */
+  /* One thing this face cannot do: digits. Marcellus draws its 0 with the
+     exact metrics of its O — same advance, same ink box — and its 1 within six
+     units of its I, so "100" is read as "IOO". Headings therefore carry words
+     and no figures; every number on the site is set in the sans, which is
+     where the SKUs, dates, counts and step numbers already live. If a heading
+     ever has to state a number, give that span the sans by hand. */
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: 400;
@@ -103,17 +109,6 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-muted);
-  }
-
-  /* Digits do not go in the display serif. Marcellus draws its 0 with the
-     exact metrics of its O — same advance, same ink box — and its 1 within
-     six units of its I, so "100" is read as "IOO". Any figure that has to sit
-     inside a heading wears this instead. Everywhere else the rule is simply
-     that numbers live in the sans: the header rail, the SKUs, the dates, the
-     step counters. */
-  .numeral {
-    font-family: var(--font-sans);
-    font-variant-numeric: tabular-nums;
   }
 
   /* Product and category captions sit under the image, never on it. Set in

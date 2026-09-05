@@ -1,7 +1,7 @@
 import CategoryCard from "../components/CategoryCard";
 import CTASection from "../components/CTASection";
 import { categories } from "../data/categories";
-import { products, smallestOrder } from "../data/products";
+import { products } from "../data/products";
 import { useReveal } from "../lib/useReveal";
 import PageHeader from "../components/PageHeader";
 import { useSeo } from "../lib/useSeo";
@@ -25,11 +25,6 @@ export default function Categories() {
         intro={
           "Four pen ranges and five gifting ranges, each built around a different corporate requirement — from a boxed set for a client to a print run for a whole dealer network."
         }
-        facts={[
-          { label: "Ranges", value: String(categories.length) },
-          { label: "Pieces", value: String(products.length) },
-          { label: "Smallest order", value: smallestOrder() },
-        ]}
         note={
           "Not everything we supply has been photographed yet. Tell us what the gift is for and we will send images of what fits."
         }
