@@ -275,6 +275,49 @@
   to { opacity: 1; }
 }
 
+/* The magnifier's easing. Slow enough to read as a lens settling rather than a
+   jump, and it must not animate the origin — only the scale — or the picture
+   swims about as the pointer moves. */
+/* Catalogue photographs arrive by being uncovered from the foot up, rather than
+   simply fading. It is the difference between a page that loads and a page that
+   is presented — and because it rides the existing reveal observer, it costs
+   nothing extra to run. */
+.card-wipe {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.9s var(--ease-brand);
+}
+
+/* Closed only while an enclosing reveal is still waiting. Written this way
+   round on purpose: a card that sits outside a reveal — the related row under a
+   product, for one — would otherwise stay shut for good. The failure a reader
+   can survive is a picture that appears without ceremony; the one they cannot
+   is a picture that never appears. */
+.reveal:not([data-visible]) .card-wipe {
+  clip-path: inset(100% 0 0 0);
+}
+
+.hero-stage {
+  --drift-x: 0px;
+  --drift-y: 0px;
+}
+
+/* Held slightly large so the drift has somewhere to go, and eased slowly so it
+   reads as the scene breathing rather than the picture chasing the cursor. The
+   stage clips it: at 1.04 the picture is wider than the window, and without
+   that clip the page gained ten pixels of sideways scroll. */
+.hero-photo {
+  transform: translate3d(var(--drift-x), var(--drift-y), 0) scale(1.04);
+  transition:
+    opacity 1.2s var(--ease-brand),
+    transform 0.9s var(--ease-brand);
+  will-change: transform;
+}
+
+.zoom-photo {
+  transition: transform 0.5s var(--ease-brand);
+  will-change: transform;
+}
+
 /* Scroll reveal — opt-in, and fully disabled under reduced motion */
 .reveal {
   opacity: 0;
@@ -306,6 +349,22 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  /* Under reduced motion nothing is uncovered, drifts or magnifies. These
+     three exist only as movement, so here they are simply switched off and the
+     pictures sit at rest — note the wipe is cleared outright rather than left
+     closed, or a reader on this setting would never see the card at all. */
+  .card-wipe,
+  .reveal:not([data-visible]) .card-wipe {
+    clip-path: none;
+    transition: none;
+  }
+
+  .hero-photo,
+  .zoom-photo {
+    transition: none;
+    transform: none !important;
   }
 
   .img-fade,

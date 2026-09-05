@@ -121,7 +121,15 @@ export default function Products() {
         ) : (
           <div className="mt-6 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.slice(0, shown).map((p, i) => (
-              <ProductCard key={p.slug} product={p} priority={i < 4} />
+              <div
+                key={p.slug}
+                className="reveal"
+                /* Staggered along the row only. Carrying the delay down a grid
+                   of a hundred would leave the last card waiting seconds. */
+                style={{ transitionDelay: `${(i % 4) * 55}ms` }}
+              >
+                <ProductCard product={p} priority={i < 4} />
+              </div>
             ))}
           </div>
         )}

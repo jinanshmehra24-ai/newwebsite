@@ -75,6 +75,33 @@ export default function HeroCarousel() {
   const current = SLIDES[index];
   const range = categoryBySlug(current.category);
 
+  /**
+   * The photograph drifts a few pixels against the pointer.
+   *
+   * Written straight to a CSS variable rather than through state: a mousemove
+   * fires dozens of times a second and re-rendering the whole carousel that
+   * often would stutter. The images are held at 1.04 so there is margin to
+   * drift into — without it the edge of the frame would show as they move.
+   */
+  const stage = useRef<HTMLDivElement>(null);
+  const drift = (e: React.PointerEvent<HTMLDivElement>) => {
+    const box = stage.current?.getBoundingClientRect();
+    if (
+      !box ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    )
+      return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const x = (e.clientX - box.left) / box.width - 0.5;
+    const y = (e.clientY - box.top) / box.height - 0.5;
+    stage.current!.style.setProperty("--drift-x", `${(-x * 14).toFixed(1)}px`);
+    stage.current!.style.setProperty("--drift-y", `${(-y * 10).toFixed(1)}px`);
+  };
+  const settle = () => {
+    stage.current?.style.setProperty("--drift-x", "0px");
+    stage.current?.style.setProperty("--drift-y", "0px");
+  };
+
   useEffect(() => {
     const still = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (still.matches || paused) return;
@@ -89,9 +116,14 @@ export default function HeroCarousel() {
 
   return (
     <div
-      className="relative"
+      ref={stage}
+      className="hero-stage relative overflow-hidden"
+      onPointerMove={drift}
       onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseLeave={() => {
+        setPaused(false);
+        settle();
+      }}
     >
       {/* The first slide sets the height; the rest are laid over it, so the
           section never jumps as the photographs change. */}
@@ -111,7 +143,7 @@ export default function HeroCarousel() {
           style={{ objectPosition: slide.position }}
           /* Sized by width, never by viewport height: with cover, a short wide
              window crops more, which is what cut the previous hero. */
-          className={`aspect-[5/4] w-full object-cover transition-opacity duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:mx-auto sm:aspect-[7/4] sm:max-w-[1600px] ${
+          className={`hero-photo aspect-[5/4] w-full object-cover transition-opacity duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:mx-auto sm:aspect-[7/4] sm:max-w-[1600px] ${
             i === index ? "opacity-100" : "opacity-0"
           } ${i === 0 ? "" : "absolute inset-0 h-full"}`}
         />

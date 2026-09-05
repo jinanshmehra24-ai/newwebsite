@@ -13,7 +13,7 @@ export default function CategoryCard({ category }: { category: Category }) {
       <div
         /* Matches the product photography's own 4:5 frame, so the pen is shown
            whole rather than cropped to a band across its middle. */
-        className="aspect-[4/5] overflow-hidden bg-paper"
+        className="card-wipe aspect-[4/5] overflow-hidden bg-paper"
       >
         <Photo
           src={`/products/${category.image}-600.webp`}

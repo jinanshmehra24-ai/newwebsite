@@ -21,7 +21,7 @@ export default function ProductCard({
     <article className="group relative flex h-full flex-col">
       <Link
         to={`/products/${product.slug}`}
-        className="block overflow-hidden bg-paper"
+        className="card-wipe block overflow-hidden bg-paper"
         tabIndex={-1}
         aria-hidden="true"
       >
