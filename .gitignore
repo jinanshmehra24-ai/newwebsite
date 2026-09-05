@@ -33,3 +33,7 @@ Desktop.ini
 .env
 .env.*
 !.env.example
+
+# Large files (Cloudflare Pages 25 MiB limit)
+resources/*.pdf
+*.pdf
