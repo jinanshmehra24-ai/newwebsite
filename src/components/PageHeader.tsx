@@ -102,6 +102,11 @@ export default function PageHeader({
                   <dt className="text-[0.625rem] uppercase tracking-[0.16em] text-muted">
                     {f.label}
                   </dt>
+                  {/* Deliberately not the display serif: Marcellus sets old-style
+                      figures, so "125" came out with the 1 at x-height and the
+                      5 below the line. Charming in a paragraph, wrong in a
+                      column of data. The serif carries the voice, the sans
+                      carries the facts. */}
                   <dd className="mt-2 whitespace-nowrap text-[1.0625rem] leading-none text-ink">
                     {f.value}
                   </dd>
