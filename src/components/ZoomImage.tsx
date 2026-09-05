@@ -53,7 +53,7 @@ export default function ZoomImage({
       onPointerMove={canHover ? track : undefined}
       onPointerEnter={canHover ? () => setZoomed(true) : undefined}
       onPointerLeave={canHover ? () => setZoomed(false) : undefined}
-      className="group relative overflow-hidden border border-line bg-paper"
+      className="relative overflow-hidden border border-line bg-paper"
     >
       <img
         src={src}
@@ -70,15 +70,6 @@ export default function ZoomImage({
         }}
         className="zoom-photo block h-auto w-full"
       />
-
-      {canHover && (
-        <span
-          aria-hidden
-          className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/85 px-4 py-1.5 text-[0.625rem] uppercase tracking-[0.16em] text-ink opacity-0 backdrop-blur-[2px] transition-opacity duration-500 group-hover:opacity-0 group-[:not(:hover)]:opacity-100"
-        >
-          Hover to zoom
-        </span>
-      )}
     </div>
   );
 }

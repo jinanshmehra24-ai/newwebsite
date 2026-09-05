@@ -265,14 +265,11 @@
 .header-in > :nth-child(3) { animation-delay: 0.22s; }
 .header-in > :nth-child(4) { animation-delay: 0.30s; }
 
-/* The photographs beside it arrive the same way, keeping their own offset. */
-.header-fan {
-  animation: fan-in 0.7s var(--ease-brand) both;
-}
-
-@keyframes fan-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* The spec panel beside it arrives on the same beat, one step behind the
+   type so the eye reads the heading first and the figures second. */
+.header-meta {
+  animation: lift-in 0.6s var(--ease-brand) both;
+  animation-delay: 0.36s;
 }
 
 /* The magnifier's easing. Slow enough to read as a lens settling rather than a
@@ -345,7 +342,7 @@
 
   .page-in,
   .header-in > *,
-  .header-fan {
+  .header-meta {
     animation: none;
     opacity: 1;
     transform: none;

@@ -342,3 +342,16 @@ export const byShape = (list: Product[]): Product[] => {
     (a, b) => (rank.get(a.shape) ?? 9) - (rank.get(b.shape) ?? 9),
   );
 };
+/**
+ * The lowest minimum order in the catalogue, counted off the products rather
+ * than written down anywhere. The figure is quoted in the header of the
+ * Products page, and a number stated on a page is a promise — reading it from
+ * the data is the only way it cannot quietly fall out of date.
+ */
+export const smallestOrder = (list: Product[] = products): string => {
+  const counts = list
+    .map((p) => Number(p.moq?.replace(/,/g, "").match(/\d+/)?.[0]))
+    .filter((n) => Number.isFinite(n) && n > 0);
+
+  return counts.length ? `${Math.min(...counts)} pieces` : "On request";
+};
