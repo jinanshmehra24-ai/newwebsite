@@ -207,14 +207,14 @@ export default function ProductDetail() {
               </h2>
               <Link
                 to={`/categories/${product.category}`}
-                className="group inline-flex items-center gap-2 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink"
+                className="group inline-flex items-center gap-2 py-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink"
               >
                 View category
                 <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
               </Link>
             </div>
 
-            <div className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid items-start gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((p) => (
                 <ProductCard key={p.slug} product={p} />
               ))}

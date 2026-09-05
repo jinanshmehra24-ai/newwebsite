@@ -77,7 +77,7 @@ export default function CategoryDetail() {
       </header>
 
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
-        <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid items-start gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((p, i) => (
             <div
               key={p.slug}
