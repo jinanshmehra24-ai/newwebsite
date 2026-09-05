@@ -4,7 +4,7 @@
  */
 export const siteConfig = {
   name: "Chandra & Co.",
-  tagline: "Your Brand, In Their Hands.",
+  tagline: "Your Brand, in Their Hands.",
   description:
     "Corporate gifting and promotional products branded for you, so your name stays in front of the people who matter.",
   url: "https://www.chandraandco.in",

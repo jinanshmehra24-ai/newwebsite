@@ -25,21 +25,21 @@ export default function GuidesTeaser() {
         />
       </div>
 
-      <ul className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-3">
+      <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-3">
         {list.map((g, i) => (
           <li
             key={g.slug}
-            className="reveal bg-white"
+            className="reveal"
             style={{ transitionDelay: `${(i % 3) * 70}ms` }}
           >
             <Link
               to={`/guides/${g.slug}`}
-              className="group flex h-full flex-col px-7 py-9 transition-colors duration-300 hover:bg-paper"
+              className="group flex h-full flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-gold-500"
             >
               <p className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
                 {g.readingMinutes} min read
               </p>
-              <h3 className="mt-3 text-[0.9375rem] leading-snug tracking-[0.05em] text-ink">
+              <h3 className="mt-3 text-[1.0625rem] leading-snug text-ink">
                 {g.title}
               </h3>
               <p className="mt-3 flex-1 text-[0.875rem] leading-relaxed text-muted">

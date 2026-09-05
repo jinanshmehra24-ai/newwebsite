@@ -77,7 +77,7 @@ export default function GuideDetail() {
               <span aria-hidden> · </span>
               {guide.readingMinutes} min read
             </p>
-            <h1 className="mt-3 text-[clamp(1.3rem,2.6vw,1.9rem)] text-ink">
+            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
               {guide.title}
             </h1>
           </div>
@@ -94,7 +94,7 @@ export default function GuideDetail() {
 
           {guide.sections.map((section, i) => (
             <section key={section.heading} className="reveal mt-14">
-              <h2 className="text-[clamp(1rem,1.5vw,1.25rem)] tracking-[0.05em] text-ink">
+              <h2 className="text-[clamp(1.25rem,1.9vw,1.6rem)] text-ink">
                 {section.heading}
               </h2>
 
@@ -160,14 +160,14 @@ export default function GuideDetail() {
           <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
             <h2 className="text-[1.125rem] text-ink">More Guides</h2>
 
-            <ul className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-3">
+            <ul className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-3">
               {others.map((g) => (
-                <li key={g.slug} className="bg-white">
+                <li key={g.slug}>
                   <Link
                     to={`/guides/${g.slug}`}
-                    className="group flex h-full flex-col px-6 py-8 transition-colors duration-300 hover:bg-paper"
+                    className="group flex h-full flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-gold-500"
                   >
-                    <h3 className="text-[0.9375rem] leading-snug tracking-[0.05em] text-ink">
+                    <h3 className="text-[1.0625rem] leading-snug text-ink">
                       {g.title}
                     </h3>
                     <p className="mt-3 flex-1 text-[0.875rem] leading-relaxed text-muted">

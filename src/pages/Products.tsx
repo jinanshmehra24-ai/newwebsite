@@ -74,7 +74,7 @@ export default function Products() {
           <div
             role="group"
             aria-label="Filter by category"
-            className="-mx-5 flex gap-7 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+            className="no-bar -mx-5 flex gap-7 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
           >
             <FilterChip active={!active} onClick={() => setCategory(null)}>
               All ({products.length})
@@ -143,7 +143,7 @@ export default function Products() {
             <button
               type="button"
               onClick={() => setShown((s) => s + PAGE_SIZE)}
-              className="rounded-sm border border-ink/25 px-8 py-3.5 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
+              className=" border border-ink/25 px-8 py-3.5 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
             >
               Load more products
             </button>

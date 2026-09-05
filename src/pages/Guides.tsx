@@ -19,6 +19,13 @@ const typicalRead = Math.round(
   guides.reduce((sum, g) => sum + g.readingMinutes, 0) / guides.length,
 );
 
+/* The most recent piece, so the rail says how current the writing is rather
+   than listing the subjects — which ran too long for the cell and was cut
+   mid-word on a narrow screen. */
+const lastUpdated = new Date(
+  guidesByDate()[0]?.published ?? Date.now(),
+).toLocaleDateString("en-IN", { month: "long", year: "numeric" });
+
 export default function Guides() {
   const root = useReveal<HTMLDivElement>();
   const list = guidesByDate();
@@ -42,7 +49,7 @@ export default function Guides() {
         facts={[
           { label: "Guides", value: String(guides.length) },
           { label: "Typical read", value: `${typicalRead} min` },
-          { label: "Covers", value: "Artwork, methods, quantity" },
+          { label: "Last added", value: lastUpdated },
         ]}
         note={
           "These are the questions we are asked most often. If yours is not answered here, send it across and we will answer it directly."
@@ -50,16 +57,16 @@ export default function Guides() {
       />
 
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
-        <ul className="grid gap-px border border-line bg-line">
+        <ul className="border-t border-line">
           {list.map((g, i) => (
             <li
               key={g.slug}
-              className="reveal bg-white"
+              className="reveal border-b border-line"
               style={{ transitionDelay: `${(i % 4) * 60}ms` }}
             >
               <Link
                 to={`/guides/${g.slug}`}
-                className="group flex flex-col gap-4 px-6 py-9 transition-colors duration-300 hover:bg-paper sm:px-10 sm:py-11 lg:flex-row lg:items-center lg:gap-14"
+                className="group flex flex-col gap-4 py-9 sm:py-11 lg:flex-row lg:items-center lg:gap-14"
               >
                 <div className="lg:flex-1">
                   <p className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
@@ -67,7 +74,7 @@ export default function Guides() {
                     <span aria-hidden> · </span>
                     {g.readingMinutes} min read
                   </p>
-                  <h2 className="mt-3 text-[clamp(1rem,1.5vw,1.25rem)] tracking-[0.05em] text-ink">
+                  <h2 className="mt-3 text-[clamp(1.25rem,1.9vw,1.6rem)] text-ink">
                     {g.title}
                   </h2>
                   <p className="mt-3 max-w-2xl text-[0.9375rem] leading-[1.8] text-muted">

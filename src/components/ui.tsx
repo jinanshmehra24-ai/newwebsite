@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
 
+/* Buttons keep their small caps — a button is a label, and that is the one
+   job uppercase still has here. What goes is the 2px corner: a radius that
+   small is neither a square nor a curve, it just looks like nobody decided.
+   Square, with more air inside it. */
 const BASE =
-  "inline-flex items-center justify-center gap-2 text-[0.75rem] font-normal uppercase tracking-[0.12em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
+  "inline-flex items-center justify-center gap-2 text-[0.75rem] font-normal uppercase tracking-[0.1em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
 
 /**
  * Buttons are deliberately quiet: a thin rule or a hairline box, never a
@@ -10,14 +14,14 @@ const BASE =
  */
 const VARIANTS = {
   primary:
-    "rounded-[2px] border border-ink px-9 py-3.5 text-ink hover:bg-ink hover:text-white",
+    "border border-ink px-10 py-4 text-ink hover:bg-ink hover:text-white",
   /* The one filled button, and the only place the brand gold carries a whole
      surface. It sits on the dark band, where the previous styling — ink border,
      muted text — was a light-ground button dropped onto a dark one and came out
      at 2.9:1 with an invisible edge. */
-  gold: "rounded-[2px] bg-gold-300 px-9 py-3.5 text-navy-950 hover:bg-gold-200",
+  gold: "bg-gold-300 px-10 py-4 text-ink hover:bg-gold-200",
   outline:
-    "rounded-[2px] border border-ink/25 px-9 py-3.5 text-ink hover:border-gold-500",
+    "border border-ink/25 px-10 py-4 text-ink hover:border-gold-500",
   /* The rule under a quiet link is always there in ink; a gold one is drawn
      over it from the left on hover, so the change reads as a stroke being made
      rather than a colour being swapped. */
@@ -27,7 +31,7 @@ const VARIANTS = {
     "after:bg-gold-500 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] " +
     "hover:after:scale-x-100 focus-visible:after:scale-x-100",
   ghostLight:
-    "border border-white/45 px-9 py-3.5 text-white hover:bg-white hover:text-ink",
+    "border border-white/45 px-10 py-4 text-white hover:bg-white hover:text-ink",
   linkLight:
     "relative border-b border-white/50 pb-1 text-white " +
     "after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:scale-x-0 " +
@@ -115,7 +119,7 @@ export function SectionHeading({
         </>
       )}
       <Tag
-        className={`mt-3 text-[clamp(1.2rem,2.1vw,1.75rem)] tracking-[0.05em] ${
+        className={`mt-3 text-[clamp(1.75rem,3.1vw,2.6rem)] ${
           tone === "light" ? "text-white" : "text-ink"
         }`}
       >

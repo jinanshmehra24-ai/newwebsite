@@ -60,7 +60,7 @@ export default function PageHeader({
               className="block h-px w-9 origin-left bg-gold-500"
             />
             <p className="eyebrow mt-4">{eyebrow}</p>
-            <h1 className="mt-3 text-[clamp(1.6rem,3.1vw,2.3rem)] leading-[1.15] text-ink">
+            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] leading-[1.15] text-ink">
               {title}
             </h1>
             {intro && (
@@ -89,7 +89,7 @@ export default function PageHeader({
             {/* The bleed-and-repad trick used by the catalogue filters: the
                 rail scrolls edge to edge on a narrow screen while its first
                 figure still lines up with the heading above it. */}
-            <dl className="-mx-5 flex overflow-x-auto px-5 sm:mx-0 sm:px-0">
+            <dl className="no-bar -mx-5 flex overflow-x-auto px-5 sm:mx-0 sm:px-0">
               {facts.map((f, i) => (
                 <div
                   key={f.label}
@@ -102,11 +102,11 @@ export default function PageHeader({
                   <dt className="text-[0.625rem] uppercase tracking-[0.16em] text-muted">
                     {f.label}
                   </dt>
-                  {/* Deliberately not the display serif: Marcellus sets old-style
-                      figures, so "125" came out with the 1 at x-height and the
-                      5 below the line. Charming in a paragraph, wrong in a
-                      column of data. The serif carries the voice, the sans
-                      carries the facts. */}
+                  {/* Deliberately not the display serif. Marcellus draws its 0
+                      on exactly the metrics of its O and its 1 barely apart
+                      from its I, so "125" reads as "I25" and "100" as "IOO".
+                      The serif carries the voice, the sans carries the
+                      figures. */}
                   <dd className="mt-2 whitespace-nowrap text-[1.0625rem] leading-none text-ink">
                     {f.value}
                   </dd>

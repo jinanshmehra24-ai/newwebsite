@@ -81,7 +81,7 @@ export default function RangeMarquee() {
         <p className="eyebrow mt-4">Beyond The Pens</p>
         <h2
           id="range-heading"
-          className="mx-auto mt-3 max-w-2xl text-[clamp(1.2rem,2.1vw,1.75rem)] tracking-[0.05em] text-ink"
+          className="mx-auto mt-3 max-w-2xl text-[clamp(1.75rem,3.1vw,2.6rem)] text-ink"
         >
           There Is A Great Deal More Than This
         </h2>

@@ -25,13 +25,13 @@ export default function Testimonials() {
           />
         </div>
 
-        <ul className="mt-16 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => {
             const product = t.product ? productBySlug(t.product) : undefined;
             return (
               <li
                 key={t.quote.slice(0, 40)}
-                className="reveal flex flex-col bg-white p-8 sm:p-10"
+                className="reveal flex flex-col border-t border-line pt-7"
                 style={{ transitionDelay: `${(i % 3) * 70}ms` }}
               >
                 <span aria-hidden className="block h-px w-7 bg-gold-500" />

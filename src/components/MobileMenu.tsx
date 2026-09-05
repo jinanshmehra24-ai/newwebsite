@@ -80,7 +80,7 @@ export default function MobileMenu({
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="flex h-10 w-10 items-center justify-center rounded-sm border border-line text-ink"
+            className="flex h-10 w-10 items-center justify-center border border-line text-ink"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
               <path
@@ -130,14 +130,14 @@ export default function MobileMenu({
         <div className="space-y-3 border-t border-line px-6 py-6">
           <Link
             to="/quote"
-            className="flex w-full items-center justify-center rounded-sm bg-ink px-6 py-4 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-white"
+            className="flex w-full items-center justify-center bg-ink px-6 py-4 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-white"
           >
             Request a Quote
           </Link>
           <div className="grid grid-cols-2 gap-3">
             <a
               href={telLink}
-              className="flex items-center justify-center rounded-sm border border-line px-4 py-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink"
+              className="flex items-center justify-center border border-line px-4 py-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink"
             >
               Call
             </a>
@@ -145,7 +145,7 @@ export default function MobileMenu({
               href={whatsappLink("Hello Chandra & Co., I'd like to discuss a corporate gifting requirement.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center rounded-sm border border-line px-4 py-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink"
+              className="flex items-center justify-center border border-line px-4 py-3 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink"
             >
               WhatsApp
             </a>

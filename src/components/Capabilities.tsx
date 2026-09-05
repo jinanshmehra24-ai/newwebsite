@@ -28,7 +28,7 @@ export default function Capabilities() {
       <div className="reveal">
         <span aria-hidden className="mx-auto block h-px w-9 bg-gold-500" />
         <p className="eyebrow mt-4 text-center">What We Handle</p>
-        <h2 className="mx-auto mt-3 max-w-2xl text-center text-[clamp(1.2rem,2.1vw,1.75rem)] tracking-[0.05em] text-ink">
+        <h2 className="mx-auto mt-3 max-w-2xl text-center text-[clamp(1.75rem,3.1vw,2.6rem)] text-ink">
           One Supplier, Start to Finish
         </h2>
         <p className="mx-auto mt-4 max-w-md text-center text-[0.9375rem] leading-[1.8] text-muted">

@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-[1400px] flex-col items-center justify-center px-5 py-32 text-center sm:px-8">
       <p className="eyebrow">Error 404</p>
-      <h1 className="mt-5 text-[clamp(1.125rem,1.8vw,1.5rem)] text-ink">
+      <h1 className="mt-5 text-[clamp(1.9rem,3.4vw,2.7rem)] text-ink">
         We couldn't find that page.
       </h1>
       <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-muted">

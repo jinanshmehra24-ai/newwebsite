@@ -18,7 +18,7 @@ export default function CTASection() {
           <div className="rule-gold w-20" />
           <h2
             id="cta-heading"
-            className="mt-7 text-[clamp(1.05rem,1.6vw,1.375rem)] text-white"
+            className="mt-7 text-[clamp(1.6rem,2.6vw,2.1rem)] text-white"
           >
             Looking for the Right Product for Your Brand?
           </h2>

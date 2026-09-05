@@ -18,7 +18,7 @@ const EMPTY: Enquiry = {
 type Errors = Partial<Record<keyof Enquiry, string>>;
 
 const FIELD =
-  "w-full rounded-sm border bg-white px-4 py-3.5 text-[0.9375rem] text-ink transition-colors placeholder:text-muted/55 focus:border-line focus:outline-none";
+  "w-full border bg-white px-4 py-3.5 text-[0.9375rem] text-ink transition-colors placeholder:text-muted/55 focus:border-line focus:outline-none";
 
 const LABEL =
   "mb-2 block text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink";

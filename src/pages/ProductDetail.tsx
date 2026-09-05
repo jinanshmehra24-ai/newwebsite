@@ -118,7 +118,7 @@ export default function ProductDetail() {
           {/* Detail */}
           <div>
             <p className="eyebrow">{category?.name}</p>
-            <h1 className="mt-4 text-[clamp(1.05rem,1.6vw,1.375rem)] text-ink">
+            <h1 className="mt-4 text-[clamp(1.6rem,2.6vw,2.1rem)] text-ink">
               {product.name}
             </h1>
 

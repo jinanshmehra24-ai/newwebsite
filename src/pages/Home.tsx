@@ -86,8 +86,8 @@ export default function Home() {
               <p className="text-[0.625rem] uppercase tracking-[0.2em] text-muted">
                 Corporate Gifting · New Delhi
               </p>
-              <h1 className="mt-3 text-[clamp(1.3rem,2.6vw,1.9rem)] text-ink">
-                Put Your Name In Their Hands.
+              <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
+                Put Your Name in Their Hands.
               </h1>
               <p className="mt-4 max-w-md text-[0.875rem] leading-[1.85] text-muted">
                 Corporate gifts branded for you and delivered where you need
@@ -270,11 +270,11 @@ export default function Home() {
             />
           </div>
 
-          <ul className="grid gap-px self-start border border-line bg-line sm:grid-cols-2">
+          <ul className="grid gap-x-12 self-start sm:grid-cols-2">
             {useCases.map((u, i) => (
               <li
                 key={u}
-                className="reveal group flex items-center justify-between gap-4 bg-white px-6 py-7 transition-colors duration-300 last:sm:col-span-2 hover:bg-paper"
+                className="reveal group flex items-center justify-between gap-4 border-b border-line py-5 last:sm:col-span-2"
                 style={{ transitionDelay: `${(i % 4) * 55}ms` }}
               >
                 <span className="text-[0.9375rem] text-ink">{u}</span>
@@ -296,17 +296,17 @@ export default function Home() {
         aria-label="How we work"
         className="border-b border-line bg-paper"
       >
-        <div className="mx-auto grid max-w-[1400px] gap-px bg-line px-0 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-[1400px] gap-x-10 gap-y-12 px-5 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
           {assurances.map((v, i) => (
             <div
               key={v.title}
-              className="reveal bg-paper p-8 sm:p-10"
+              className="reveal border-t border-line pt-7"
               style={{ transitionDelay: `${i * 70}ms` }}
             >
               <span className="accent text-[0.6875rem] tracking-[0.16em]">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h2 className="mt-4 text-[0.8125rem] text-ink">{v.title}</h2>
+              <h2 className="mt-4 text-[1.0625rem] text-ink">{v.title}</h2>
               <p className="mt-3 text-[0.8125rem] leading-[1.85] text-muted">
                 {v.body}
               </p>

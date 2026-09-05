@@ -16,13 +16,19 @@
   --color-gold-600: #bc7f1e;
   --color-gold-700: #9a6818;
 
-  /* Neutrals — the palette does the work; photography carries the colour */
+  /* Neutrals — the palette does the work; photography carries the colour.
+     Every one of these is warm. The old set was neutral grey: #272727 for the
+     dark bands is the colour of a slate roof, and against leather, walnut and
+     brass photography it read as cold and flat. These are mixed towards brown
+     instead, so the dark sections sit in the same light as the products
+     standing on them, and the paper looks like paper rather than an unpainted
+     wall. */
   --color-ivory: #ffffff;
-  --color-paper: #f3f1ec;
-  --color-sand: #f2f2f2;
-  --color-line: #e4e1da;
-  --color-ink: #272727;
-  --color-muted: #6e6e6e;
+  --color-paper: #f4f1e9;
+  --color-sand: #efece4;
+  --color-line: #e2ddd2;
+  --color-ink: #17130f;
+  --color-muted: #6b6156;
 
   /* Headings are set in Marcellus, a roman face cut from inscriptional
      capitals — the same letterforms that get engraved into a pen barrel or
@@ -52,25 +58,25 @@
     overflow-x: hidden;
   }
 
-  /* Light, letterspaced and uppercase — but no longer whisper-quiet. A
-     supplier has to say plainly what it makes, and at 17px the headline was
-     losing that argument to its own restraint. Tracking eases off as the size
-     grows, because letterspacing that flatters a small label pulls a large
-     line apart. */
+  /* Headings used to be uppercase and letterspaced — and so did the product
+     names, the buttons, the labels, the captions and the navigation. When
+     every line on a page is shouting, none of them is, and the whole thing
+     reads as a template rather than a house with something to say.
+     Uppercase is now spent in one place only: the small eyebrow label. The
+     headings are set in the serif's own case, at its own spacing, and given
+     the size to carry a page on their own. */
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: 400;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 1.22;
   }
 
-  /* A serif carries more shape than a sans at the same size, so the tracking
-     comes in a little and the leading closes up — spaced as widely as the old
-     Inter headings were, the capitals stopped reading as words. */
+  /* Display sizes need the leading pulled in further still — at 1.22 a
+     three-line headline drifts apart. */
   h1 {
-    letter-spacing: 0.035em;
-    line-height: 1.18;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
   }
 
   :focus-visible {
@@ -99,12 +105,25 @@
     color: var(--color-muted);
   }
 
-  /* Product and category captions sit under the image, never on it. */
+  /* Digits do not go in the display serif. Marcellus draws its 0 with the
+     exact metrics of its O — same advance, same ink box — and its 1 within
+     six units of its I, so "100" is read as "IOO". Any figure that has to sit
+     inside a heading wears this instead. Everywhere else the rule is simply
+     that numbers live in the sans: the header rail, the SKUs, the dates, the
+     step counters. */
+  .numeral {
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Product and category captions sit under the image, never on it. Set in
+     the display serif at reading case: "Metal Pen" is the name of a thing,
+     and spelling it M E T A L  P E N turns it into signage. */
   .caption {
-    font-size: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
     font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0;
     color: var(--color-ink);
   }
 
@@ -198,6 +217,17 @@
     to {
       transform: translate3d(-25%, 0, 0);
     }
+  }
+
+  /* Rails that scroll sideways on a narrow screen do it silently. The bar
+     itself is chrome, and chrome on a catalogue page reads as unfinished. */
+  .no-bar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-bar::-webkit-scrollbar {
+    display: none;
   }
 
   .rule-gold {

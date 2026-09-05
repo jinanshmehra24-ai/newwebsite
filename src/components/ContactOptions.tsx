@@ -29,7 +29,7 @@ const options = [
 
 export default function ContactOptions() {
   return (
-    <div className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+    <div className="grid gap-x-10 gap-y-10 sm:grid-cols-3">
       {options.map((o) => (
         <a
           key={o.label}
@@ -37,7 +37,7 @@ export default function ContactOptions() {
           {...(o.external
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
-          className="group flex flex-col bg-white p-7 transition-colors duration-300 hover:bg-paper"
+          className="group flex flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-gold-500"
         >
           <span className="eyebrow">{o.label}</span>
           <span className="mt-3 break-all text-[0.9375rem] text-ink">

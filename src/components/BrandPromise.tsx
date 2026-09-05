@@ -32,7 +32,7 @@ export default function BrandPromise() {
           <p className="eyebrow mt-4 text-white/60">Whose Name Goes On It</p>
           <h2
             id="promise-heading"
-            className="mt-3 text-[clamp(1.2rem,2.1vw,1.75rem)] tracking-[0.05em] text-white"
+            className="mt-3 text-[clamp(1.75rem,3.1vw,2.6rem)] text-white"
           >
             Your Brand. Only Your Brand.
           </h2>

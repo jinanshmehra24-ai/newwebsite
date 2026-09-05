@@ -63,7 +63,7 @@ export default function CategoryDetail() {
 
           <div className="header-in mt-7 max-w-2xl">
             <div className="rule-gold w-16" />
-            <h1 className="mt-6 text-[clamp(1.125rem,1.8vw,1.5rem)] text-white">
+            <h1 className="mt-6 text-[clamp(1.9rem,3.4vw,2.7rem)] text-white">
               {category.name}
             </h1>
             <p className="mt-6 text-[1.0625rem] leading-relaxed text-white/70">
@@ -100,7 +100,7 @@ export default function CategoryDetail() {
               <Link
                 key={c.slug}
                 to={`/categories/${c.slug}`}
-                className="rounded-sm border border-line bg-white px-5 py-3 text-[0.8125rem] font-medium text-ink transition-colors hover:border-ink/40 hover:bg-paper"
+                className=" border border-line bg-white px-5 py-3 text-[0.8125rem] font-medium text-ink transition-colors hover:border-ink/40 hover:bg-paper"
               >
                 {c.name}
               </Link>

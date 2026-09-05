@@ -50,7 +50,7 @@ export default function ProductCard({
         </h3>
 
         {/* Always occupies a line so cards stay the same height with or without a code. */}
-        <p className="mt-1.5 min-h-[1rem] text-[0.6875rem] tracking-[0.06em] text-muted">
+        <p className="mt-1.5 min-h-[1rem] text-[0.6875rem] text-muted">
           {product.sku ? `SKU ${product.sku}` : ""}
         </p>
 

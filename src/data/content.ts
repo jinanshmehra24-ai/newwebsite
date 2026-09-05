@@ -11,7 +11,7 @@
  */
 export const assurances = [
   {
-    title: "Order sizes from 100",
+    title: "Every range states its minimum",
     body: "Some ranges start at a hundred pieces, others at a thousand. Each product page states its own minimum.",
   },
   {

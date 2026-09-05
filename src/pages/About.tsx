@@ -109,19 +109,19 @@ export default function About() {
         <div className="reveal">
           <SectionHeading
             eyebrow="Branding Methods"
-            title="Getting Your Logo On It, Properly"
+            title="Getting Your Logo on It, Properly"
             intro="The method is chosen for the material and the mark — so fine detail survives at the size it is actually printed."
           />
         </div>
 
-        <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {brandingMethods.map((m, i) => (
             <div
               key={m.title}
-              className="reveal bg-white p-8"
+              className="reveal border-t border-line pt-7"
               style={{ transitionDelay: `${(i % 4) * 70}ms` }}
             >
-              <h3 className="text-[0.9375rem] text-ink">{m.title}</h3>
+              <h3 className="text-[1.0625rem] text-ink">{m.title}</h3>
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{m.body}</p>
             </div>
           ))}
