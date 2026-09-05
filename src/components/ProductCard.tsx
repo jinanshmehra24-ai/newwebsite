@@ -35,7 +35,7 @@ export default function ProductCard({
           loading={priority ? "eager" : "lazy"}
           decoding="async"
           fetchPriority={priority ? "high" : "auto"}
-          className="block h-auto w-full transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+          className="card-zoom block h-auto w-full"
         />
       </Link>
 

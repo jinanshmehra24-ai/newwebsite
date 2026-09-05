@@ -349,9 +349,19 @@
   will-change: transform;
 }
 
-.zoom-photo {
-  transition: transform 0.5s var(--ease-brand);
-  will-change: transform;
+/* A catalogue photograph leans in a little under the pointer.
+   It used to run on the same easing as everything else here — an out-quint,
+   which puts about sixty per cent of its travel into the first tenth of the
+   time. On a page transition that reads as decisive; on a hover it reads as a
+   flinch, the picture snapping forward and then creeping the rest of the way.
+   This curve spends its time evenly, so the movement is one gesture from
+   start to finish, and it is the same going out as coming in. */
+.card-zoom {
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .card-zoom {
+  transform: scale(var(--card-zoom, 1.03));
 }
 
 /* Scroll reveal — opt-in, and fully disabled under reduced motion */
@@ -398,7 +408,7 @@
   }
 
   .hero-photo,
-  .zoom-photo {
+  .card-zoom {
     transition: none;
     transform: none !important;
   }

@@ -24,7 +24,8 @@ export default function CategoryCard({ category }: { category: Category }) {
           height={750}
           loading="lazy"
           decoding="async"
-          className="h-full w-full object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+          className="card-zoom h-full w-full object-cover"
+          style={{ "--card-zoom": 1.04 } as React.CSSProperties}
         />
       </div>
 

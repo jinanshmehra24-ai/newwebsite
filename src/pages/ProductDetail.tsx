@@ -4,8 +4,8 @@ import { ArrowRight } from "../components/ui";
 import Breadcrumb from "../components/Breadcrumb";
 import ProductCard from "../components/ProductCard";
 import ProductEnquiry from "../components/ProductEnquiry";
-import ZoomImage from "../components/ZoomImage";
 import MoreRangeNotice from "../components/MoreRangeNotice";
+import Photo from "../components/Photo";
 import { productBySlug, products, productSrcSet } from "../data/products";
 import { categoryBySlug } from "../data/categories";
 import { siteConfig } from "../config/site";
@@ -80,13 +80,19 @@ export default function ProductDetail() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Gallery */}
           <div>
-            <ZoomImage
-              src={product.images[activeImage]}
-              srcSet={productSrcSet(product.slug)}
-              alt={`${product.name} — ${category?.name} by Chandra & Co.`}
-              width={product.width}
-              height={product.height}
-            />
+            <div className="overflow-hidden border border-line bg-paper">
+              <Photo
+                src={product.images[activeImage]}
+                srcSet={productSrcSet(product.slug)}
+                sizes="(max-width: 1024px) 92vw, 46vw"
+                alt={`${product.name} — ${category?.name} by Chandra & Co.`}
+                width={product.width}
+                height={product.height}
+                fetchPriority="high"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+            </div>
 
             {product.images.length > 1 && (
               <div className="mt-4 flex gap-3">
