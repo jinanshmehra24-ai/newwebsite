@@ -50,7 +50,7 @@ export default function Navbar() {
       </a>
 
       {/* Announcement rule — scrolls away, the way it does on the reference site */}
-      <div className="bg-ink py-2 text-center">
+      <div className="bg-deep py-2 text-center">
         <p className="text-[0.625rem] uppercase tracking-[0.2em] text-white/85">
           Corporate gifting, customised to your brand
         </p>

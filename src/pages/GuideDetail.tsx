@@ -69,7 +69,7 @@ export default function GuideDetail() {
           />
 
           <div className="header-in mt-7 max-w-3xl">
-            <span aria-hidden className="block h-px w-9 bg-gold-500" />
+            <span aria-hidden className="block h-px w-9 bg-violet-500" />
             <p className="eyebrow mt-4">
               <time dateTime={guide.published}>
                 {readable(guide.published)}
@@ -116,7 +116,7 @@ export default function GuideDetail() {
                     >
                       <span
                         aria-hidden
-                        className="mt-2.5 h-px w-5 shrink-0 bg-gold-500"
+                        className="mt-2.5 h-px w-5 shrink-0 bg-violet-500"
                       />
                       {item}
                     </li>
@@ -165,7 +165,7 @@ export default function GuideDetail() {
                 <li key={g.slug}>
                   <Link
                     to={`/guides/${g.slug}`}
-                    className="group flex h-full flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-gold-500"
+                    className="group flex h-full flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-violet-500"
                   >
                     <h3 className="text-[1.0625rem] leading-snug text-ink">
                       {g.title}

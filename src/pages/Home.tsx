@@ -115,6 +115,7 @@ export default function Home() {
           <SectionHeading
             align="center"
             eyebrow="Product Range"
+              index={1}
             title="Products That Represent Your Brand"
             intro="Nine ranges, every one of them a surface for your logo — pick the one that suits who is receiving it."
           />
@@ -142,6 +143,7 @@ export default function Home() {
             <SectionHeading
               align="center"
               eyebrow="Selected Pieces"
+              index={2}
               title="Featured Products"
               intro="A cross-section of the pen catalogue — from laser-engraved metal bodies to high-volume promotional ranges."
             />
@@ -192,6 +194,7 @@ export default function Home() {
           <div className="reveal">
             <SectionHeading
               eyebrow="Custom Branding"
+              index={3}
               title={
                 <>
                   Your Brand. On Products
@@ -220,11 +223,12 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------------------------- Why us */}
-      <section className="bg-ink">
+      <section className="bg-deep">
         <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
           <div className="reveal">
             <SectionHeading
               eyebrow="Why Chandra & Co."
+              index={4}
               title="Built Around Your Brand"
               tone="light"
             />
@@ -256,6 +260,7 @@ export default function Home() {
           <div className="reveal">
             <SectionHeading
               eyebrow="Where We Fit"
+              index={5}
               title="Made for Every Corporate Moment"
               intro="From a hundred-piece dealer campaign to a company-wide employee gift, the range is built to scale with the occasion."
             />

@@ -1,43 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand navy — sampled from the Chandra & Co. catalogue covers */
-  --color-navy-950: #050d22;
-  --color-navy-900: #0a1a38;
-  --color-navy-800: #10264f;
-  --color-navy-700: #183466;
-  --color-navy-600: #244783;
+  /* The palette is taken from the White Widget site the owner asked this to
+     match: an almost-white ground, a desaturated indigo for type, a deep
+     indigo for the dark sections, and a sharp lime as the one colour that
+     raises its voice. Two of the greys are moved a shade off the source
+     because the originals did not clear 4.5:1 — noted on each.  */
 
-  /* Brand gold — sampled from the logo vector artwork */
-  --color-gold-200: #f0d79b;
-  --color-gold-300: #e8ba56;
-  --color-gold-400: #d9a53f;
-  --color-gold-500: #cb9433;
-  --color-gold-600: #bc7f1e;
-  --color-gold-700: #9a6818;
-
-  /* Neutrals — the palette does the work; photography carries the colour.
-     Every one of these is warm. The old set was neutral grey: #272727 for the
-     dark bands is the colour of a slate roof, and against leather, walnut and
-     brass photography it read as cold and flat. These are mixed towards brown
-     instead, so the dark sections sit in the same light as the products
-     standing on them, and the paper looks like paper rather than an unpainted
-     wall. */
+  /* Grounds */
   --color-ivory: #ffffff;
-  --color-paper: #f4f1e9;
-  --color-sand: #efece4;
-  --color-line: #e2ddd2;
-  --color-ink: #17130f;
-  --color-muted: #6b6156;
+  --color-paper: #f9f9f9;
+  --color-sand: #eeedf1;
+  --color-line: #e3e2e6;
 
-  /* Headings are set in Marcellus, a roman face cut from inscriptional
-     capitals — the same letterforms that get engraved into a pen barrel or
-     stamped into a leather flap. Everything on this site ends up as a mark on
-     an object, so the type may as well come from the same tradition. Inter
-     stays underneath it for anything that has to be read rather than admired:
-     body copy, labels, figures, form fields. */
-  --font-display: "Marcellus", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Ink. --color-deep carries the dark sections, --color-deeper the cards
+     that sit on them. */
+  --color-ink: #312e41;
+  --color-deep: #1e1b2e;
+  --color-deeper: #262336;
+
+  /* Secondary text. #777582 in the source measures 4.29:1 on the ground,
+     which is under the 4.5 small text has to clear, so it is taken four steps
+     darker to 4.74. On the dark sections #abaab2 clears comfortably at 7.3. */
+  --color-muted: #706e7b;
+  --color-dim: #abaab2;
+
+  /* The lime is the signature — filled buttons, the numeral badges, anything
+     that has to be found on a dark ground. 13.7:1 against the deep indigo. */
+  --color-lime-300: #e9f78f;
+  --color-lime-400: #e2f273;
+  --color-lime-500: #d6ea4e;
+
+  /* The violet does the same job on the light ground, where the lime would
+     disappear. 5.1:1 on the paper; it is never used on the dark, where it
+     only reaches 3.1. */
+  --color-violet-500: #695bc4;
+  --color-violet-600: #5a4cb0;
+
+  /* Archivo is held wide and heavy for display — the reference sets its
+     headings in Integral CF, a licensed retail face that cannot be embedded
+     here, and Archivo at the top of its width axis is the nearest thing in
+     the free libraries. Manrope is the body face on both. */
+  --font-display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -49,7 +54,7 @@
   }
 
   body {
-    background-color: var(--color-ivory);
+    background-color: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-synthesis-weight: none;
@@ -58,31 +63,24 @@
     overflow-x: hidden;
   }
 
-  /* Headings used to be uppercase and letterspaced — and so did the product
-     names, the buttons, the labels, the captions and the navigation. When
-     every line on a page is shouting, none of them is, and the whole thing
-     reads as a template rather than a house with something to say.
-     Uppercase is now spent in one place only: the small eyebrow label. The
-     headings are set in the serif's own case, at its own spacing, and given
-     the size to carry a page on their own. */
-  /* One thing this face cannot do: digits. Marcellus draws its 0 with the
-     exact metrics of its O — same advance, same ink box — and its 1 within six
-     units of its I, so "100" is read as "IOO". Headings therefore carry words
-     and no figures; every number on the site is set in the sans, which is
-     where the SKUs, dates, counts and step numbers already live. If a heading
-     ever has to state a number, give that span the sans by hand. */
+  /* Display type, the way the reference sets it: heavy, held wide on
+     Archivo's width axis, leading pulled right down to the size of the type
+     itself, and a touch of tracking added back because a face this heavy
+     closes up at large sizes. Sentence case — the capitals came off this site
+     several revisions ago and they are not coming back. */
   h1, h2, h3 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 1.22;
+    font-variation-settings: "wdth" 118;
+    font-weight: 700;
+    letter-spacing: 0.005em;
+    line-height: 1.05;
   }
 
-  /* Display sizes need the leading pulled in further still — at 1.22 a
-     three-line headline drifts apart. */
-  h1 {
-    line-height: 1.1;
-    letter-spacing: -0.005em;
+  /* Below about 20px the expanded width starts to cost legibility more than
+     it buys presence, so the small headings sit nearer the normal width. */
+  h3 {
+    font-variation-settings: "wdth" 110;
+    line-height: 1.2;
   }
 
   :focus-visible {
@@ -91,7 +89,7 @@
   }
 
   ::selection {
-    background: var(--color-gold-200);
+    background: var(--color-lime-300);
     color: var(--color-ink);
   }
 
@@ -122,16 +120,22 @@
     color: var(--color-ink);
   }
 
-  /* One warm note in an otherwise monochrome page, and a shade darker than the
-     logo's own gold: at 11px the brand value measured 4.26:1 on the paper
-     ground, just under the 4.5:1 small text has to clear. This one reads 4.6
-     on paper and 5.2 on white. */
+  /* The one raised voice on a light page. The violet measures 5.1:1 on the
+     ground, so it is safe at label size; it is never used on the dark
+     sections, where it falls to 3.1 and the lime takes over. */
   .accent {
-    color: #936317;
+    color: var(--color-violet-500);
   }
 
-  /* Capability pills. Sharp corners everywhere else; these are the one place a
-     radius earns its keep, because a pill reads as a tag and a square does not. */
+  /* Two radii, both lifted from the reference: 16px wherever a photograph or
+     a panel is boxed, 8px on the controls. The site was square-cornered
+     before this; softening it is most of what separates the two looks. */
+  .card-radius {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* Capability pills, already round before any of this. */
   .chip {
     display: inline-flex;
     align-items: center;
@@ -150,7 +154,7 @@
   }
 
   .chip:hover {
-    border-color: var(--color-gold-500);
+    border-color: var(--color-violet-500);
     transform: translateY(-2px);
   }
 
@@ -158,7 +162,7 @@
     width: 5px;
     height: 5px;
     border-radius: 999px;
-    background: var(--color-gold-500);
+    background: var(--color-violet-500);
   }
 
   /* A band of the wider range that keeps moving past the edge of the frame.
@@ -225,12 +229,12 @@
     display: none;
   }
 
-  .rule-gold {
+  .rule-accent {
     height: 1px;
     background: linear-gradient(
       to right,
-      var(--color-gold-500),
-      color-mix(in srgb, var(--color-gold-500) 15%, transparent)
+      var(--color-violet-500),
+      color-mix(in srgb, var(--color-violet-500) 15%, transparent)
     );
   }
 }
@@ -285,7 +289,7 @@
 }
 
 .header-in > span,
-.header-in > .rule-gold {
+.header-in > .rule-accent {
   animation: rule-draw 0.6s var(--ease-brand) both;
   transform-origin: left;
 }
@@ -360,17 +364,26 @@
 }
 
 /* Scroll reveal — opt-in, and fully disabled under reduced motion */
+/* The reference's signature move: things do not merely fade in, they come
+   into focus. Reading its stylesheet, the reveals transition filter alongside
+   transform and opacity — a short blur resolving as the element settles. It
+   costs one extra property and it is the difference between a page that
+   appears and a page that arrives. Kept small: 6px of blur over 0.65s. Any
+   more and the text is unreadable for long enough to notice. */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px);
+  filter: blur(6px);
   transition:
-    opacity 0.7s var(--ease-brand),
-    transform 0.7s var(--ease-brand);
+    opacity 0.65s var(--ease-brand),
+    transform 0.65s var(--ease-brand),
+    filter 0.65s var(--ease-brand);
 }
 
 .reveal[data-visible="true"] {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -381,6 +394,7 @@
   .reveal {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 

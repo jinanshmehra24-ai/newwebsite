@@ -64,7 +64,7 @@ export default function Guides() {
                   </p>
                 </div>
 
-                <span className="inline-flex shrink-0 items-center gap-2 border-b border-ink/40 pb-1 text-[0.75rem] uppercase tracking-[0.12em] text-ink transition-colors duration-300 group-hover:border-gold-500">
+                <span className="inline-flex shrink-0 items-center gap-2 border-b border-ink/40 pb-1 text-[0.75rem] uppercase tracking-[0.12em] text-ink transition-colors duration-300 group-hover:border-violet-500">
                   Read
                   <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
                 </span>

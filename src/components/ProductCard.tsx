@@ -21,7 +21,7 @@ export default function ProductCard({
     <article className="group relative flex h-full flex-col">
       <Link
         to={`/products/${product.slug}`}
-        className="card-wipe block overflow-hidden bg-paper"
+        className="card-wipe card-radius block bg-sand"
         tabIndex={-1}
         aria-hidden="true"
       >
@@ -54,7 +54,7 @@ export default function ProductCard({
           {product.sku ? `SKU ${product.sku}` : ""}
         </p>
 
-        <span className="mt-3 border-b border-transparent pb-0.5 text-[0.6875rem] uppercase tracking-[0.12em] text-muted transition-colors duration-300 group-hover:border-gold-500 group-hover:text-ink">
+        <span className="mt-3 border-b border-transparent pb-0.5 text-[0.6875rem] uppercase tracking-[0.12em] text-muted transition-colors duration-300 group-hover:border-violet-500 group-hover:text-ink">
           Request a Quote
         </span>
       </div>

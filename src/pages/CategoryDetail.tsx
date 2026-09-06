@@ -39,7 +39,7 @@ export default function CategoryDetail() {
 
   return (
     <div ref={root}>
-      <header className="relative isolate overflow-hidden bg-ink pb-14 pt-20 sm:pb-16 sm:pt-24">
+      <header className="relative isolate overflow-hidden bg-deep pb-14 pt-20 sm:pb-16 sm:pt-24">
         <img
           src={`/products/${category.image}-1200.webp`}
           srcSet={productSrcSet(category.image)}
@@ -62,7 +62,7 @@ export default function CategoryDetail() {
           />
 
           <div className="header-in mt-7 max-w-2xl">
-            <div className="rule-gold w-16" />
+            <div className="rule-accent w-16" />
             <h1 className="mt-6 text-[clamp(1.9rem,3.4vw,2.7rem)] text-white">
               {category.name}
             </h1>

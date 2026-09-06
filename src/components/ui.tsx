@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SectionIndex from "./SectionIndex";
 import type { ReactNode } from "react";
 
 /* Buttons keep their small caps — a button is a label, and that is the one
@@ -14,24 +15,24 @@ const BASE =
  */
 const VARIANTS = {
   primary:
-    "border border-ink px-10 py-4 text-ink hover:bg-ink hover:text-white",
-  /* The one filled button, and the only place the brand gold carries a whole
-     surface. It sits on the dark band, where the previous styling — ink border,
-     muted text — was a light-ground button dropped onto a dark one and came out
-     at 2.9:1 with an invisible edge. */
-  gold: "bg-gold-300 px-10 py-4 text-ink hover:bg-gold-200",
+    "rounded-lg bg-ink px-8 py-3.5 text-paper hover:bg-deep",
+  /* The one filled button on the site, and the only place the lime carries a
+     whole surface. It belongs on the dark sections, where it reads at 13.7:1
+     and does the job the reference design gives it: one thing on the page
+     that raises its voice. */
+  accent: "rounded-lg bg-lime-400 px-8 py-3.5 text-deep hover:bg-lime-300",
   outline:
-    "border border-ink/25 px-10 py-4 text-ink hover:border-gold-500",
-  /* The rule under a quiet link is always there in ink; a gold one is drawn
+    "rounded-lg border border-ink/20 px-8 py-3.5 text-ink hover:border-ink/50",
+  /* The rule under a quiet link is always there in ink; a violet one is drawn
      over it from the left on hover, so the change reads as a stroke being made
      rather than a colour being swapped. */
   link:
     "relative border-b border-ink/40 pb-1 text-ink " +
     "after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:scale-x-0 " +
-    "after:bg-gold-500 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] " +
+    "after:bg-violet-500 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] " +
     "hover:after:scale-x-100 focus-visible:after:scale-x-100",
   ghostLight:
-    "border border-white/45 px-10 py-4 text-white hover:bg-white hover:text-ink",
+    "rounded-lg border border-white/35 px-8 py-3.5 text-white hover:bg-white hover:text-deep",
   linkLight:
     "relative border-b border-white/50 pb-1 text-white " +
     "after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:scale-x-0 " +
@@ -93,6 +94,7 @@ export function SectionHeading({
   intro,
   align = "left",
   tone = "dark",
+  index,
   as: Tag = "h2",
 }: {
   eyebrow?: string;
@@ -100,17 +102,34 @@ export function SectionHeading({
   intro?: ReactNode;
   align?: "left" | "center";
   tone?: "dark" | "light";
+  /** Position in the page. Given one, the heading wears a numbered marker
+      instead of the short rule, and the block runs the full measure. */
+  index?: number;
   as?: "h1" | "h2";
 }) {
   const centered = align === "center";
+  const numbered = typeof index === "number";
+
   return (
-    <div className={`${centered ? "mx-auto max-w-xl text-center" : "max-w-xl"}`}>
-      {eyebrow && (
+    <div
+      className={
+        numbered
+          ? ""
+          : centered
+            ? "mx-auto max-w-xl text-center"
+            : "max-w-xl"
+      }
+    >
+      {numbered && eyebrow && (
+        <SectionIndex n={index} label={eyebrow} tone={tone} />
+      )}
+
+      {!numbered && eyebrow && (
         <>
           <span
             aria-hidden
             className={`block h-px w-9 ${centered ? "mx-auto" : ""} ${
-              tone === "light" ? "bg-white/40" : "bg-gold-500"
+              tone === "light" ? "bg-white/40" : "bg-violet-500"
             }`}
           />
           <p className={`eyebrow mt-4 ${tone === "light" ? "text-white/60" : ""}`}>
@@ -119,9 +138,9 @@ export function SectionHeading({
         </>
       )}
       <Tag
-        className={`mt-3 text-[clamp(1.75rem,3.1vw,2.6rem)] ${
-          tone === "light" ? "text-white" : "text-ink"
-        }`}
+        className={`text-[clamp(1.75rem,3.4vw,2.9rem)] ${
+          numbered ? "mt-7 max-w-2xl" : "mt-3"
+        } ${tone === "light" ? "text-white" : "text-ink"}`}
       >
         {title}
       </Tag>

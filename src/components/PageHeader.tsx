@@ -41,10 +41,10 @@ export default function PageHeader({
           <div className="header-in max-w-2xl">
             <span
               aria-hidden
-              className="block h-px w-9 origin-left bg-gold-500"
+              className="block h-px w-9 origin-left bg-violet-500"
             />
             <p className="eyebrow mt-4">{eyebrow}</p>
-            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] leading-[1.15] text-ink">
+            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
               {title}
             </h1>
             {intro && (

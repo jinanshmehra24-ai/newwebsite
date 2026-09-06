@@ -67,7 +67,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-ink">
+      <section className="bg-deep">
         <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-28">
           <div className="reveal">
             <SectionHeading

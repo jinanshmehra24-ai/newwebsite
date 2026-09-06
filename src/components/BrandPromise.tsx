@@ -25,10 +25,10 @@ const POINTS = [
 
 export default function BrandPromise() {
   return (
-    <section className="bg-ink" aria-labelledby="promise-heading">
+    <section className="bg-deep" aria-labelledby="promise-heading">
       <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-28">
         <div className="reveal max-w-2xl">
-          <span aria-hidden className="block h-px w-9 bg-gold-300" />
+          <span aria-hidden className="block h-px w-9 bg-lime-400" />
           <p className="eyebrow mt-4 text-white/60">Whose Name Goes On It</p>
           <h2
             id="promise-heading"
@@ -69,7 +69,7 @@ export default function BrandPromise() {
               >
                 <span
                   aria-hidden
-                  className="mt-2.5 h-px w-7 shrink-0 bg-gold-300"
+                  className="mt-2.5 h-px w-7 shrink-0 bg-lime-400"
                 />
                 <div>
                   <h3 className="text-[0.9375rem] text-white">{p.title}</h3>
@@ -83,7 +83,7 @@ export default function BrandPromise() {
         </div>
 
         <div className="reveal mt-14">
-          <ButtonLink to="/quote" variant="gold">
+          <ButtonLink to="/quote" variant="accent">
             Tell Us What You Need
           </ButtonLink>
         </div>

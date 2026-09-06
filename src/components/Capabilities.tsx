@@ -26,7 +26,7 @@ export default function Capabilities() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
       <div className="reveal">
-        <span aria-hidden className="mx-auto block h-px w-9 bg-gold-500" />
+        <span aria-hidden className="mx-auto block h-px w-9 bg-violet-500" />
         <p className="eyebrow mt-4 text-center">What We Handle</p>
         <h2 className="mx-auto mt-3 max-w-2xl text-center text-[clamp(1.75rem,3.1vw,2.6rem)] text-ink">
           One Supplier, Start to Finish

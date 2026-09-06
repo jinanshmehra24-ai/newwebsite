@@ -37,7 +37,7 @@ export default function ContactOptions() {
           {...(o.external
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
-          className="group flex flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-gold-500"
+          className="group flex flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-violet-500"
         >
           <span className="eyebrow">{o.label}</span>
           <span className="mt-3 break-all text-[0.9375rem] text-ink">

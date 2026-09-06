@@ -2,7 +2,7 @@ import { ButtonLink } from "./ui";
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-ink" aria-labelledby="cta-heading">
+    <section className="relative overflow-hidden bg-deep" aria-labelledby="cta-heading">
       <img
         src="/editorial/hero-dark-pen-1800.webp"
         alt=""
@@ -15,7 +15,7 @@ export default function CTASection() {
 
       <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="max-w-2xl">
-          <div className="rule-gold w-20" />
+          <div className="rule-accent w-20" />
           <h2
             id="cta-heading"
             className="mt-7 text-[clamp(1.6rem,2.6vw,2.1rem)] text-white"
@@ -27,7 +27,7 @@ export default function CTASection() {
             requirements.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <ButtonLink to="/products" variant="gold">
+            <ButtonLink to="/products" variant="accent">
               View Catalogue
             </ButtonLink>
             <ButtonLink to="/quote" variant="ghostLight">

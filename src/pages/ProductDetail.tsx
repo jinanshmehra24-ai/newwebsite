@@ -80,7 +80,7 @@ export default function ProductDetail() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Gallery */}
           <div>
-            <div className="overflow-hidden border border-line bg-paper">
+            <div className="card-radius bg-sand">
               <Photo
                 src={product.images[activeImage]}
                 srcSet={productSrcSet(product.slug)}

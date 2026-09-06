@@ -34,7 +34,7 @@ export default function GuidesTeaser() {
           >
             <Link
               to={`/guides/${g.slug}`}
-              className="group flex h-full flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-gold-500"
+              className="group flex h-full flex-col border-t border-line pt-7 transition-colors duration-500 hover:border-violet-500"
             >
               <p className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
                 {g.readingMinutes} min read
