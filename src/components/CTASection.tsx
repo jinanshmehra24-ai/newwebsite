@@ -1,4 +1,5 @@
 import { ButtonLink } from "./ui";
+import { siteConfig, whatsappLink } from "../config/site";
 
 export default function CTASection() {
   return (
@@ -26,7 +27,20 @@ export default function CTASection() {
             Explore our products or speak with our team about your custom corporate
             requirements.
           </p>
+          {/* Three ways out of here, and the quickest one is first. Most
+              enquiries arrive on WhatsApp, so it should not be the option a
+              visitor has to go looking for. */}
           <div className="mt-10 flex flex-wrap gap-4">
+            <ButtonLink
+              href={whatsappLink(
+                `Hello ${siteConfig.name}, I have a corporate gifting requirement I would like to discuss.`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="whatsapp"
+            >
+              Chat on WhatsApp
+            </ButtonLink>
             <ButtonLink to="/products" variant="accent">
               View Catalogue
             </ButtonLink>

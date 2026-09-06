@@ -31,6 +31,13 @@
   --color-lime-400: #e2f273;
   --color-lime-500: #d6ea4e;
 
+  /* WhatsApp's own green, because that is what a visitor recognises. Note
+     the text on it is the deep indigo, not white: white on this green
+     measures 1.98:1, which is the mistake most sites make with it, while the
+     indigo reads 8.5. */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1fbb59;
+
   /* The violet does the same job on the light ground, where the lime would
      disappear. 5.1:1 on the paper; it is never used on the dark, where it
      only reaches 3.1. */

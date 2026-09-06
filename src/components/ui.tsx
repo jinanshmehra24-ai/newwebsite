@@ -21,6 +21,10 @@ const VARIANTS = {
      and does the job the reference design gives it: one thing on the page
      that raises its voice. */
   accent: "rounded-lg bg-lime-400 px-8 py-3.5 text-deep hover:bg-lime-300",
+  /* Reads as WhatsApp at a glance, which is the whole point of it. Deep
+     indigo on the green rather than white — see the note on the token. */
+  whatsapp:
+    "rounded-lg bg-whatsapp px-8 py-3.5 text-deep hover:bg-whatsapp-dark",
   outline:
     "rounded-lg border border-ink/20 px-8 py-3.5 text-ink hover:border-ink/50",
   /* The rule under a quiet link is always there in ink; a violet one is drawn
