@@ -51,17 +51,21 @@ export default function Home() {
         <div className="relative">
           <HeroCarousel />
 
-          {/* The two ways through the site sit inside the picture. Measured
-              across the pens' own band the frame is dark planting to 14%, bare
-              to 23%, and only then the first pen, so from 640px a stacked panel
-              held to the left edge rests on that planting and grazes the black
-              barrel rather than covering the arrangement. A phone has no such
-              margin — two readable labels there span half the frame whatever
-              you do — so the same block lies along the foot instead. It stands
-              down at 1280px, where the full block takes over. */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-end sm:items-center">
+          {/* The two ways through the site sit inside the picture, but only
+              where the picture has room for them. Measured across the pens'
+              own band the frame is dark planting to 14%, bare to 23%, and only
+              then the first pen, so from 640px a stacked panel held to the
+              left edge rests on that planting and grazes the black barrel
+              rather than covering the arrangement. It stands down again at
+              1280px, where the full text block takes over.
+              A phone has no such margin. Two readable labels span half the
+              frame whatever you do, and laid along the foot the panel read as
+              a bar stuck onto the photograph. Below 640px it is gone
+              altogether and the same two links sit under the picture with the
+              heading, where they belong. */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 hidden sm:flex sm:items-center">
             <div className="mx-auto w-full max-w-[1600px] sm:pl-24 sm:pr-8">
-              <div className="pointer-events-auto flex w-full items-center gap-x-6 bg-white/90 px-5 py-2.5 backdrop-blur-[2px] sm:inline-flex sm:w-auto sm:flex-col sm:items-start sm:gap-3 sm:px-6 sm:py-5 xl:hidden">
+              <div className="pointer-events-auto flex w-full items-center gap-x-6 bg-white/90 px-6 py-2.5 backdrop-blur-[2px] sm:inline-flex sm:w-auto sm:flex-col sm:items-start sm:gap-3 sm:px-6 sm:py-5 xl:hidden">
                 <ButtonLink to="/products" variant="link">
                   Explore Products
                 </ButtonLink>
@@ -81,12 +85,12 @@ export default function Home() {
             wordmark entirely and stays in view on a wide monitor, where the foot
             of the frame would not. */}
         <div className="xl:absolute xl:inset-y-0 xl:left-0 xl:right-0 xl:z-10 xl:flex xl:items-center">
-          <div className="mx-auto w-full max-w-[1600px] px-5 py-10 sm:px-8 xl:py-0 xl:pl-24">
+          <div className="mx-auto w-full max-w-[1600px] px-6 py-10 sm:px-8 xl:py-0 xl:pl-24">
             <div className="max-w-xl xl:max-w-sm xl:bg-white/90 xl:px-8 xl:py-8 xl:backdrop-blur-[2px]">
               <p className="text-[0.625rem] uppercase tracking-[0.2em] text-muted">
                 Corporate Gifting · New Delhi
               </p>
-              <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
+              <h1 className="mt-3 text-[clamp(1.85rem,4.4vw,3.4rem)] text-ink">
                 Put Your Name in Their Hands.
               </h1>
               <p className="mt-4 max-w-md text-[0.875rem] leading-[1.85] text-muted">
@@ -95,8 +99,9 @@ export default function Home() {
                 every day.
               </p>
 
-              {/* The panel on the picture carries these below 1280px. */}
-              <div className="mt-7 hidden flex-wrap items-center gap-x-8 gap-y-3 xl:flex">
+              {/* The panel on the picture carries these between 640 and
+                  1280px; on either side of that, they sit here. */}
+              <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-3 sm:hidden xl:flex">
                 <ButtonLink to="/products" variant="link">
                   Explore Products
                 </ButtonLink>
@@ -110,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* ---------------------------------------------------------- Categories */}
-      <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+      <section className="mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
         <div className="reveal">
           <SectionHeading
             align="center"
@@ -138,7 +143,7 @@ export default function Home() {
 
       {/* ---------------------------------------------------- Featured products */}
       <section className="border-y border-line bg-paper">
-        <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
           <div className="reveal">
             <SectionHeading
               align="center"
@@ -168,7 +173,7 @@ export default function Home() {
       <BrandPromise />
 
       {/* ------------------------------------------------------ Custom branding */}
-      <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+      <section className="mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="reveal relative">
             <img
@@ -224,7 +229,7 @@ export default function Home() {
 
       {/* ------------------------------------------------------------- Why us */}
       <section className="bg-deep">
-        <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
           <div className="reveal">
             <SectionHeading
               eyebrow="Why Chandra & Co."
@@ -255,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* ----------------------------------------------------------- Use cases */}
-      <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+      <section className="mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div className="reveal">
             <SectionHeading
@@ -301,7 +306,7 @@ export default function Home() {
         aria-label="How we work"
         className="border-b border-line bg-paper"
       >
-        <div className="mx-auto grid max-w-[1400px] gap-x-10 gap-y-12 px-5 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-[1400px] gap-x-10 gap-y-12 px-6 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
           {assurances.map((v, i) => (
             <div
               key={v.title}
@@ -328,7 +333,7 @@ export default function Home() {
         className="border-t border-line bg-paper"
         aria-labelledby="enquiry-heading"
       >
-        <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
           <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <div className="reveal">
               <SectionHeading

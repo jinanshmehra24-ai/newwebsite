@@ -34,7 +34,7 @@ export default function PageHeader({
 }) {
   return (
     <header className="border-b border-line bg-paper pb-11 pt-20 sm:pb-14 sm:pt-24">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-8">
         <Breadcrumb trail={trail} />
 
         <div className="mt-7 gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-end lg:gap-16">
@@ -44,7 +44,7 @@ export default function PageHeader({
               className="block h-px w-9 origin-left bg-violet-500"
             />
             <p className="eyebrow mt-4">{eyebrow}</p>
-            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
+            <h1 className="mt-3 text-[clamp(1.85rem,4.4vw,3.4rem)] text-ink">
               {title}
             </h1>
             {intro && (

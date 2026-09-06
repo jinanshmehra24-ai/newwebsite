@@ -13,12 +13,12 @@ export default function CTASection() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/55" />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="relative mx-auto max-w-[1400px] px-6 py-16 sm:px-8 sm:py-32">
         <div className="max-w-2xl">
           <div className="rule-accent w-20" />
           <h2
             id="cta-heading"
-            className="mt-7 text-[clamp(1.6rem,2.6vw,2.1rem)] text-white"
+            className="mt-7 text-[clamp(1.4rem,2.6vw,2.1rem)] text-white"
           >
             Looking for the Right Product for Your Brand?
           </h2>

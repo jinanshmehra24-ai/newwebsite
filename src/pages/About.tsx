@@ -28,7 +28,7 @@ export default function About() {
         }
       />
 
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="mx-auto max-w-[1400px] px-6 py-20 sm:px-8 sm:py-28">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="reveal">
             <img
@@ -68,7 +68,7 @@ export default function About() {
       </section>
 
       <section className="bg-deep">
-        <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1400px] px-6 py-20 sm:px-8 sm:py-28">
           <div className="reveal">
             <SectionHeading
               eyebrow="How We Work"
@@ -97,7 +97,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="mx-auto max-w-[1400px] px-6 py-20 sm:px-8 sm:py-28">
         <div className="reveal">
           <SectionHeading
             eyebrow="Branding Methods"

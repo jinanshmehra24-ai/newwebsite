@@ -76,7 +76,7 @@ export default function ProductDetail() {
         />
       </div>
 
-      <article className="mx-auto max-w-[1400px] px-5 py-12 sm:px-8 sm:py-16">
+      <article className="mx-auto max-w-[1400px] px-6 py-12 sm:px-8 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Gallery */}
           <div>
@@ -124,7 +124,7 @@ export default function ProductDetail() {
           {/* Detail */}
           <div>
             <p className="eyebrow">{category?.name}</p>
-            <h1 className="mt-4 text-[clamp(1.6rem,2.6vw,2.1rem)] text-ink">
+            <h1 className="mt-4 text-[clamp(1.4rem,2.6vw,2.1rem)] text-ink">
               {product.name}
             </h1>
 
@@ -200,7 +200,7 @@ export default function ProductDetail() {
 
       {related.length > 0 && (
         <section className="border-t border-line bg-paper">
-          <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
+          <div className="mx-auto max-w-[1400px] px-6 py-14 sm:px-8 sm:py-24">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 className="text-[1.125rem] text-ink">
                 More from {category?.name}

@@ -62,13 +62,13 @@ export default function Products() {
         }
       />
 
-      <div className="mx-auto max-w-[1400px] px-5 py-12 sm:px-8">
+      <div className="mx-auto max-w-[1400px] px-6 py-12 sm:px-8">
         <div className="flex flex-col gap-6 border-b border-line pb-8 lg:flex-row lg:items-center lg:justify-between">
           {/* Horizontal strip on small screens so filters never push the grid off-screen */}
           <div
             role="group"
             aria-label="Filter by category"
-            className="no-bar -mx-5 flex gap-7 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+            className="no-bar -mx-6 flex gap-7 overflow-x-auto px-6 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
           >
             <FilterChip active={!active} onClick={() => setCategory(null)}>
               All ({products.length})

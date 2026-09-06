@@ -138,7 +138,7 @@ export function SectionHeading({
         </>
       )}
       <Tag
-        className={`text-[clamp(1.75rem,3.4vw,2.9rem)] ${
+        className={`text-[clamp(1.5rem,3.4vw,2.9rem)] ${
           numbered ? "mt-7 max-w-2xl" : "mt-3"
         } ${tone === "light" ? "text-white" : "text-ink"}`}
       >

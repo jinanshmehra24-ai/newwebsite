@@ -16,7 +16,7 @@ export default function Testimonials() {
 
   return (
     <section className="border-y border-line bg-paper">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-[1400px] px-6 py-24 sm:px-8 sm:py-28">
         <div className="reveal">
           <SectionHeading
             align="center"

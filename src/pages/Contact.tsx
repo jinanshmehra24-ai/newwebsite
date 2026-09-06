@@ -29,7 +29,7 @@ export default function Contact() {
         }
       />
 
-      <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 sm:py-20">
+      <section className="mx-auto max-w-[1400px] px-6 py-12 sm:px-8 sm:py-20">
         <div className="reveal">
           <ContactOptions />
         </div>

@@ -38,7 +38,7 @@ export default function Guides() {
         }
       />
 
-      <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-[1400px] px-6 py-14 sm:px-8 sm:py-24">
         <ul className="border-t border-line">
           {list.map((g, i) => (
             <li

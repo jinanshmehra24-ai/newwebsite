@@ -76,7 +76,7 @@ export default function RangeMarquee() {
       aria-labelledby="range-heading"
       className="overflow-hidden border-y border-line bg-paper py-20 sm:py-24"
     >
-      <div className="reveal mx-auto max-w-[1400px] px-5 text-center sm:px-8">
+      <div className="reveal mx-auto max-w-[1400px] px-6 text-center sm:px-8">
         <span aria-hidden className="mx-auto block h-px w-9 bg-violet-500" />
         <p className="eyebrow mt-4">Beyond The Pens</p>
         <h2

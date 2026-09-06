@@ -52,7 +52,7 @@ export default function CategoryDetail() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/92 to-ink/60" />
 
-        <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
+        <div className="relative mx-auto max-w-[1400px] px-6 sm:px-8">
           <Breadcrumb
             tone="light"
             trail={[
@@ -63,7 +63,7 @@ export default function CategoryDetail() {
 
           <div className="header-in mt-7 max-w-2xl">
             <div className="rule-accent w-16" />
-            <h1 className="mt-6 text-[clamp(1.9rem,3.4vw,2.7rem)] text-white">
+            <h1 className="mt-6 text-[clamp(1.6rem,3.4vw,2.7rem)] text-white">
               {category.name}
             </h1>
             <p className="mt-6 text-[1.0625rem] leading-relaxed text-white/70">
@@ -76,7 +76,7 @@ export default function CategoryDetail() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-[1400px] px-6 py-14 sm:px-8 sm:py-24">
         <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((p, i) => (
             <div
@@ -100,7 +100,7 @@ export default function CategoryDetail() {
               <Link
                 key={c.slug}
                 to={`/categories/${c.slug}`}
-                className=" border border-line bg-white px-5 py-3 text-[0.8125rem] font-medium text-ink transition-colors hover:border-ink/40 hover:bg-paper"
+                className=" border border-line bg-white px-6 py-3 text-[0.8125rem] font-medium text-ink transition-colors hover:border-ink/40 hover:bg-paper"
               >
                 {c.name}
               </Link>

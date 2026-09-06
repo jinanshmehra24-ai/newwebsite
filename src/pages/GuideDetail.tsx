@@ -63,7 +63,7 @@ export default function GuideDetail() {
   return (
     <div ref={root}>
       <header className="border-b border-line bg-paper pb-12 pt-20 sm:pb-16 sm:pt-24">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+        <div className="mx-auto max-w-[1400px] px-6 sm:px-8">
           <Breadcrumb
             trail={[{ label: "Guides", to: "/guides" }, { label: guide.title }]}
           />
@@ -77,14 +77,14 @@ export default function GuideDetail() {
               <span aria-hidden> · </span>
               {guide.readingMinutes} min read
             </p>
-            <h1 className="mt-3 text-[clamp(2.2rem,4.4vw,3.4rem)] text-ink">
+            <h1 className="mt-3 text-[clamp(1.85rem,4.4vw,3.4rem)] text-ink">
               {guide.title}
             </h1>
           </div>
         </div>
       </header>
 
-      <article className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
+      <article className="mx-auto max-w-[1400px] px-6 py-14 sm:px-8 sm:py-24">
         {/* A single measured column: this is prose, and prose is read, not
             scanned across a grid. */}
         <div className="max-w-2xl">
@@ -157,7 +157,7 @@ export default function GuideDetail() {
 
       {others.length > 0 && (
         <section className="border-t border-line bg-paper">
-          <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
+          <div className="mx-auto max-w-[1400px] px-6 py-14 sm:px-8 sm:py-24">
             <h2 className="text-[1.125rem] text-ink">More Guides</h2>
 
             <ul className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-3">

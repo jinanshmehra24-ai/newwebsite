@@ -24,7 +24,7 @@ const CAPABILITIES = [
 
 export default function Capabilities() {
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24">
+    <section className="mx-auto max-w-[1400px] px-6 py-14 sm:px-8 sm:py-24">
       <div className="reveal">
         <span aria-hidden className="mx-auto block h-px w-9 bg-violet-500" />
         <p className="eyebrow mt-4 text-center">What We Handle</p>

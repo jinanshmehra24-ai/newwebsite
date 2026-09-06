@@ -26,7 +26,7 @@ const POINTS = [
 export default function BrandPromise() {
   return (
     <section className="bg-deep" aria-labelledby="promise-heading">
-      <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-[1400px] px-6 py-24 sm:px-8 sm:py-28">
         <div className="reveal max-w-2xl">
           <span aria-hidden className="block h-px w-9 bg-lime-400" />
           <p className="eyebrow mt-4 text-white/60">Whose Name Goes On It</p>

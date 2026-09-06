@@ -64,7 +64,7 @@ export default function Navbar() {
         }`}
       >
         {/* Centred wordmark, with the utility action held to the right edge. */}
-        <div className="relative mx-auto flex max-w-[1400px] items-center justify-center px-5 sm:px-8">
+        <div className="relative mx-auto flex max-w-[1400px] items-center justify-center px-6 sm:px-8">
           <Link
             to="/"
             onClick={() => {

@@ -15,7 +15,7 @@ export default function GuidesTeaser() {
   if (list.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-28">
+    <section className="mx-auto max-w-[1400px] px-6 py-24 sm:px-8 sm:py-28">
       <div className="reveal">
         <SectionHeading
           align="center"

@@ -83,6 +83,24 @@
     line-height: 1.2;
   }
 
+  /* On a phone the width axis comes back to normal.
+     This is the whole reason for choosing a variable face. An expanded heavy
+     grotesque at 35px on a 375px screen fits about fourteen characters to the
+     line, so every headline ran wall to wall with 20px of air either side and
+     the page felt squeezed. Narrowing the axis buys roughly a sixth more
+     characters per line at exactly the same type size — the headline keeps its
+     presence and stops fighting the edges. Nothing is scaled down to achieve
+     it. */
+  @media (max-width: 640px) {
+    h1, h2 {
+      font-variation-settings: "wdth" 100;
+    }
+
+    h3 {
+      font-variation-settings: "wdth" 100;
+    }
+  }
+
   :focus-visible {
     outline: 1px solid var(--color-ink);
     outline-offset: 3px;
