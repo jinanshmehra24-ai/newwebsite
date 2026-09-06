@@ -94,7 +94,7 @@ export default function Categories() {
             {shown.map((c, i) => (
               <div
                 key={c.slug}
-                className="reveal"
+                className="reveal h-full"
                 style={{ transitionDelay: `${(i % 3) * 60}ms` }}
               >
                 <CategoryTile category={c} count={counts.get(c.slug) ?? 0} />

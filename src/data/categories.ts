@@ -42,8 +42,8 @@ const ALL_CATEGORIES: Category[] = [
   },
   {
     slug: "executive-pens",
-    name: "Executive Pens",
-    short: "Weighted metal bodies that hold an engraving cleanly.",
+    name: "Metal Executive Pens",
+    short: "Weighted barrels that hold an engraving cleanly.",
     description:
       "Metal pens with weighted barrels and polished, matte and textured finishes, shown in the desk settings they are gifted into. Each carries a branding panel that holds a laser engraving cleanly.",
     image: "metal-pen-26088",
@@ -58,15 +58,15 @@ const ALL_CATEGORIES: Category[] = [
   },
   {
     slug: "elite-pens",
-    name: "Elite Pens",
-    short: "Clean-lined plastic bodies in a wide colour palette.",
+    name: "Plastic Elite Pens",
+    short: "Clean-lined bodies in a wide colour palette.",
     description:
       "The Elite range — plastic ball pens with clean barrels and a broad colour palette, alongside a clear-barrelled gel pen, all printed end to end with your branding. Built for conferences, campaigns and everyday corporate supply.",
     image: "elite-ball-pen-04",
   },
   {
     slug: "supreme-pens",
-    name: "Supreme Pens",
+    name: "Plastic Supreme Pens",
     short: "Named models across click, grip and transparent bodies.",
     description:
       "Our Supreme catalogue — individually named models spanning click-action, rubber-grip, frosted and transparent bodies, each offered across its own colour set and printed to your brand.",
@@ -74,7 +74,7 @@ const ALL_CATEGORIES: Category[] = [
   },
   {
     slug: "prime-pens",
-    name: "Prime Pens",
+    name: "Plastic Prime Pens",
     short: "Moulded bodies in full colour sets, and two gel rollers.",
     description:
       "The Prime range — plastic ball pens moulded in wood, marble and soft-touch finishes across full colour sets, printed end to end with your branding, alongside a pair of metallic-barrelled gel rollers for gifting.",

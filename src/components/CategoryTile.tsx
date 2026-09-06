@@ -25,7 +25,10 @@ export default function CategoryTile({
   return (
     <Link
       to={`/categories/${category.slug}`}
-      className="group flex items-center gap-2.5 rounded-2xl border border-line bg-white p-2 transition-colors duration-300 hover:border-ink/25 sm:gap-4 sm:p-3"
+      /* h-full so two tiles sharing a row match, whatever their names do:
+         "Metal Executive Pens" takes three lines in a phone column while
+         "Bags" takes one, and without it the row came out ragged. */
+      className="group flex h-full items-center gap-2.5 rounded-2xl border border-line bg-white p-2 transition-colors duration-300 hover:border-ink/25 sm:gap-4 sm:p-3"
     >
       {/* Small enough on a phone that two tiles sit across a 375px screen and
           all nine stand inside one view; it grows back at 640px, where there
