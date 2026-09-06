@@ -86,14 +86,21 @@ export default function Home() {
             of the frame would not. */}
         <div className="xl:absolute xl:inset-y-0 xl:left-0 xl:right-0 xl:z-10 xl:flex xl:items-center">
           <div className="mx-auto w-full max-w-[1600px] px-6 py-10 sm:px-8 xl:py-0 xl:pl-24">
-            <div className="max-w-xl xl:max-w-sm xl:bg-white/90 xl:px-8 xl:py-8 xl:backdrop-blur-[2px]">
+            {/* A flex column on a phone purely so the two links can be lifted
+                above the introduction — see the order on the paragraph
+                below. From 640px it is an ordinary block again. */}
+            <div className="flex max-w-xl flex-col sm:block xl:max-w-sm xl:bg-white/90 xl:px-8 xl:py-8 xl:backdrop-blur-[2px]">
               <p className="text-[0.625rem] uppercase tracking-[0.2em] text-muted">
                 Corporate Gifting · New Delhi
               </p>
               <h1 className="mt-3 text-[clamp(1.85rem,4.4vw,3.4rem)] text-ink">
                 Put Your Name in Their Hands.
               </h1>
-              <p className="mt-4 max-w-md text-[0.875rem] leading-[1.85] text-muted">
+              {/* Ordered after the links on a phone: the heading says what the
+                  business does, the links offer the two ways in, and the
+                  explanation follows. That lifts both links from 35px below
+                  the fold on a 667px screen to well above it. */}
+              <p className="order-1 mt-4 max-w-md text-[0.875rem] leading-[1.85] text-muted sm:order-none">
                 Corporate gifts branded for you and delivered where you need
                 them — so the people you are trying to reach carry your name
                 every day.

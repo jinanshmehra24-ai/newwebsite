@@ -84,10 +84,22 @@ export default function Navbar() {
             />
           </Link>
 
+          {/* A phone shows the wordmark and a hamburger and nothing else,
+              so on a shorter handset a visitor could open the site and
+              find no way forward above the fold — the hero's own two links
+              sat at 679px, past the bottom of a 667px screen. This pill
+              costs no vertical space at all and is on every page. */}
+          <Link
+            to="/quote"
+            className="absolute left-6 rounded-full bg-lime-400 px-3.5 py-2 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-deep transition-colors hover:bg-lime-300 sm:hidden"
+          >
+            Quote
+          </Link>
+
           <div className="absolute right-5 flex items-center gap-3 sm:right-8">
             <Link
               to="/quote"
-              className="hidden text-[0.6875rem] uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink sm:inline-flex"
+              className="hidden items-center py-2 text-[0.6875rem] uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink sm:inline-flex"
             >
               Request a Quote
             </Link>

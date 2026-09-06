@@ -174,7 +174,7 @@ function FilterChip({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`shrink-0 whitespace-nowrap border-b pb-1.5 text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-300 ${
+      className={`shrink-0 whitespace-nowrap border-b pb-1.5 pt-1.5 text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-300 ${
         active
           ? "border-ink text-ink"
           : "border-transparent text-muted hover:border-ink/30 hover:text-ink"

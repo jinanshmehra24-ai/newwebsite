@@ -114,7 +114,60 @@ export default function HeroCarousel() {
     return () => window.clearInterval(timer.current);
   }, [advance, paused]);
 
+  /* The range currently shown and the four slide markers. On a phone these
+     sit on the paper under the photograph; from 640px up they go back onto
+     the picture where there is room for them. Same markup either way. */
+  const controls = (onPhoto: boolean) => (
+    <>
+      {/* A pale pill is what lets these read against marble or black leather.
+          On the paper rail there is nothing to read against, so the ground
+          comes off and the label is simply set in ink. */}
+      <span
+        className={`text-[0.625rem] uppercase tracking-[0.16em] text-ink ${
+          onPhoto
+            ? "rounded-full bg-white/85 px-4 py-1.5 backdrop-blur-[2px]"
+            : "text-muted"
+        }`}
+      >
+        {range ? range.name : ""}
+      </span>
+
+      <div
+        className={`pointer-events-auto flex items-center gap-2.5 ${
+          onPhoto
+            ? "rounded-full bg-white/85 px-3 py-1 backdrop-blur-[2px]"
+            : ""
+        }`}
+      >
+        {SLIDES.map((slide, i) => (
+          <button
+            key={slide.name}
+            type="button"
+            onClick={() => setIndex(i)}
+            aria-label={`Show photograph ${i + 1} of ${SLIDES.length}`}
+            aria-current={i === index}
+            /* The mark is six pixels; the target must not be. These were
+               6x6 buttons, which is a thing to look at rather than a thing to
+               press — on a phone especially. The dot is unchanged; the button
+               around it now clears 24px in both directions. */
+            className="group/dot grid h-6 min-w-6 place-items-center px-1"
+          >
+            <span
+              aria-hidden
+              className={`block h-1.5 rounded-full transition-all duration-500 ${
+                i === index
+                  ? "w-6 bg-ink"
+                  : "w-1.5 bg-ink/30 group-hover/dot:bg-ink/60"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+    </>
+  );
+
   return (
+    <div>
     <div
       ref={stage}
       className="hero-stage relative overflow-hidden"
@@ -199,26 +252,20 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex flex-col items-center gap-3 pb-16 sm:pb-7">
-        <span className="pointer-events-none rounded-full bg-white/85 px-4 py-1.5 text-[0.625rem] uppercase tracking-[0.16em] text-ink backdrop-blur-[2px]">
-          {range ? range.name : ""}
-        </span>
-
-        <div className="pointer-events-auto flex items-center gap-2.5 rounded-full bg-white/85 px-4 py-2.5 backdrop-blur-[2px]">
-          {SLIDES.map((slide, i) => (
-            <button
-              key={slide.name}
-              type="button"
-              onClick={() => setIndex(i)}
-              aria-label={`Show photograph ${i + 1} of ${SLIDES.length}`}
-              aria-current={i === index}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === index ? "w-6 bg-ink" : "w-1.5 bg-ink/30 hover:bg-ink/60"
-              }`}
-            />
-          ))}
-        </div>
+      {/* On the photograph from 640px up only. Below that the two pills
+          landed squarely on the middle of the product — a gift box is
+          photographed centred, so anything floating in the frame covers the
+          thing it is advertising. The clearance they used to keep (pb-16) was
+          for the call-to-action bar that no longer sits there on a phone. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 hidden flex-col items-center gap-3 pb-7 sm:flex">
+        {controls(true)}
       </div>
+    </div>
+
+    {/* The phone's copy: under the picture, on the paper, covering nothing. */}
+    <div className="flex items-center justify-center gap-4 border-b border-line py-2 sm:hidden">
+      {controls(false)}
+    </div>
     </div>
   );
 }

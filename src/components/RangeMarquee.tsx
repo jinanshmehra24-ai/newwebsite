@@ -103,14 +103,14 @@ export default function RangeMarquee() {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 border-b border-ink/40 pb-1 text-[0.75rem] uppercase tracking-[0.12em] text-ink transition-colors duration-300 hover:border-violet-500"
+          className="group inline-flex items-center gap-2 border-b border-ink/40 pb-1.5 pt-1.5 text-[0.75rem] uppercase tracking-[0.12em] text-ink transition-colors duration-300 hover:border-violet-500"
         >
           Ask For The Full Range
           <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
         </a>
         <Link
           to="/quote"
-          className="border-b border-ink/40 pb-1 text-[0.75rem] uppercase tracking-[0.12em] text-ink transition-colors duration-300 hover:border-violet-500"
+          className="border-b border-ink/40 pb-1.5 pt-1.5 text-[0.75rem] uppercase tracking-[0.12em] text-ink transition-colors duration-300 hover:border-violet-500"
         >
           Request a Quote
         </Link>
