@@ -1,4 +1,11 @@
 import { useId, useRef, useState } from "react";
+
+// Tell TypeScript that fbq exists on window (injected by Meta Pixel in index.html)
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 import { Button } from "./ui";
 import { submitEnquiry, type Enquiry } from "../lib/submitEnquiry";
 import { MIN_FILL_MS, checkRate, recordSent, signature } from "../lib/spamGuard";
@@ -137,7 +144,11 @@ export default function EnquiryForm({
       : await submitEnquiry(values, honeypot);
 
     if (result.ok) {
-      if (!looksAutomated) recordSent(sig);
+      if (!looksAutomated) {
+        recordSent(sig);
+        // Fire Meta Pixel Lead event on genuine successful submission
+        window.fbq?.('track', 'Lead');
+      }
       setState("sent");
       setNote(
         result.via === "mail-client"
