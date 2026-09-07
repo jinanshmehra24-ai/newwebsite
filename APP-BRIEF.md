@@ -18,9 +18,13 @@ version-controlled alongside the catalogue it describes.
 > cannot give us.
 >
 > **What the app is.** A browsable product catalogue with **prices**, a **cart**,
-> and an **AI assistant** that helps a buyer choose. This is a change from the
-> website, which shows no prices and has no cart — read the note on pricing
-> below before you design anything, because the answer is not settled.
+> and an **AI assistant** that helps a buyer choose.
+>
+> The website has none of those and is **staying that way** — do not add pricing
+> or a cart to it, and do not treat the difference as something to reconcile.
+> The site is the catalogue that ends in a conversation; the app is the priced
+> one. Read the website folder to take data and photographs from it, and change
+> nothing in it.
 >
 > **All the content already exists** in another folder on this machine:
 > `C:\Users\jinanshh\Desktop\Chandra & co Website`
@@ -102,13 +106,15 @@ moves, and a buyer sees immediately that ordering more costs less each. Branding
 method can ride on top as a stated addition — laser, screen and UV do not cost
 the same — rather than being hidden in one blended figure.
 
-Two things to decide with it:
+One thing to decide with it: **GST inclusive or exclusive.** A B2B buyer
+expects exclusive, with the tax shown. Say which, on every screen that carries a
+number.
 
-- **GST inclusive or exclusive.** A B2B buyer expects exclusive, with the tax
-  shown. Say which, on every screen that shows a number.
-- **Whether the website starts showing prices too.** If the app does and the
-  site does not, the same product has two stories. That is a business decision;
-  just do not let it happen by accident.
+**The website is not changing.** It keeps publishing no prices and having no
+cart — that is settled, and it is not an oversight to be tidied up later. The
+app is the priced, cart-carrying surface; the site stays the catalogue that ends
+in a conversation. If you find yourself editing anything under the website
+folder other than to read from it, stop.
 
 ### 2. What happens when the cart is full?
 
@@ -165,6 +171,10 @@ first four are what stop Apple reading the app as a website in a wrapper.
 ## Decided already, do not re-open
 
 **Native, both stores, push.** The PWA stays as it is and costs nothing to keep.
+
+**Prices and the cart are the app only.** The website publishes no price and has
+no cart, deliberately, and that does not change. Read from the website folder;
+never write to it.
 
 **Two accounts, and they take time.**
 
