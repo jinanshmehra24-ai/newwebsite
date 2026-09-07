@@ -1,0 +1,19 @@
+# ai.txt – AI Usage Policy for chandraandco.in
+# See: https://site.ai-txt.org
+# Last updated: 2026-09-07
+
+# No AI system may scrape, index, reproduce, summarise,
+# or use any content from this site for training, fine-tuning,
+# or evaluation of machine-learning models.
+
+User-agent: *
+Disallow: /training
+Disallow: /scraping
+
+# Content permissions
+Allow: /
+
+# Training data – explicitly denied
+Training: no
+Scraping: no
+Summarizing: no

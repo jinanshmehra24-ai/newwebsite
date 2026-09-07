@@ -1,0 +1,7 @@
+/*
+  # Block AI crawlers at the HTTP response header level
+  X-Robots-Tag: noai, noimageai
+  # Prevent clickjacking
+  X-Frame-Options: SAMEORIGIN
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
