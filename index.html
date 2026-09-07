@@ -10,7 +10,11 @@
     <meta name="description" content="Chandra &amp; Co. brands corporate gifts for businesses across India — pens, gift sets, keychains, mobile stands, desk pieces and bags, all carrying your logo and nobody else." />
     <meta name="keywords" content="corporate gifts, promotional products, branded pens, keychains, mobile stands, desk accessories, bags, India" />
     <meta name="author" content="Chandra &amp; Co." />
-    <meta name="theme-color" content="#272727" />
+    <!-- The deep indigo of the strip that runs across the top of every page,
+         so an installed app continues it into the status bar. #272727 was
+         the ink from two palettes ago. -->
+    <meta name="theme-color" content="#1e1b2e" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="robots" content="index, follow" />
 
     <!-- AI Training & Scraping — explicitly denied -->
@@ -82,13 +86,15 @@
       fbq('init', '2509183119587547');
       fbq('track', 'PageView');
     </script>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body>
+    <!-- Meta Pixel, no-script fallback. Belongs in the body: an <img>
+         inside a <noscript> in the <head> is invalid HTML. -->
     <noscript>
       <img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=2509183119587547&ev=PageView&noscript=1" />
     </noscript>
-    <!-- End Meta Pixel Code -->
-  </head>
-  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

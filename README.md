@@ -23,6 +23,7 @@ npm run dev      # http://localhost:5173
 | `npm run preview` | Serves the built `dist/` |
 | `npm run typecheck` | Types only |
 | `npm run sitemap` | Rewrites `public/sitemap.xml` from the catalogue data |
+| `npm run icons` | Re-renders the app icons from the logo — see PWA below |
 
 > The scripts call `node ./node_modules/...` directly rather than the usual
 > shorthand. The `&` in this folder's name breaks npm's Windows `.cmd` shims —
@@ -46,6 +47,41 @@ pages_build_output_dir = "dist"
 Pages runs `npm run build` and serves `dist/`. Pushing to `main` is the deploy —
 there is no separate step. Cloudflare refuses any single file over 25 MiB, which
 is why the catalogue PDFs are kept out of the repository (see below).
+
+---
+
+## Installable (PWA)
+
+The site installs to a phone's home screen and opens without browser chrome.
+There is no separate app codebase — `vite-plugin-pwa` generates the manifest and
+a service worker from the same build.
+
+| Script | What it does |
+| --- | --- |
+| `npm run icons` | Re-renders the app icons from `public/logo-mark.svg` |
+
+**What is cached, and what is not.** The shell — HTML, JS, CSS, the logos — is
+precached at install: 27 files, about 464 KiB. The 126 product photographs are
+*not*; at 17MB they would turn a first visit into a download of the whole
+catalogue. They are cached as they are viewed instead, capped at 220 files for
+sixty days, so a range already browsed opens with its pictures on a train and
+one never opened simply asks for the network.
+
+Verified by stopping the server and loading a product page: it rendered from
+cache, photograph included.
+
+**Updates** are `autoUpdate` — a new deploy takes over on the next visit without
+asking. A catalogue must not show a withdrawn product because someone installed
+it in March.
+
+**Icons** come from `scripts/icons.mjs`, which renders the gold mark centred on
+the deep indigo. Transparent icons show as black squares on some Android
+launchers, and the maskable one keeps the mark inside the 80% circle Android
+crops to. `theme_color` is the deep indigo of the strip across the top of every
+page, so the status bar continues it rather than cutting against it.
+
+**On iPhone** there is no install prompt — Safari installs through Share → Add
+to Home Screen. Everything else behaves the same.
 
 ---
 
