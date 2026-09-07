@@ -7,8 +7,14 @@ is context for you, not for that chat.
 
 ## The prompt
 
-> I want to build a mobile app for Chandra & Co., a New Delhi corporate gifting
-> supplier. Smooth, and with a genuinely useful AI assistant in it.
+> I want to build a **native mobile app** for Chandra & Co., a New Delhi
+> corporate gifting supplier — going on the **Google Play Store and the Apple
+> App Store**, with **push notifications**. Smooth, and with a genuinely useful
+> AI assistant in it.
+>
+> This is decided; do not re-open it. The website is already an installable PWA,
+> and this is being built for the store listing and for push, which the PWA
+> cannot give us.
 >
 > **All the content already exists** in another folder on this machine:
 > `C:\Users\jinanshh\Desktop\Chandra & co Website`
@@ -43,6 +49,15 @@ is context for you, not for that chat.
 > meet, budget around ₹200 each" should get real suggestions from the actual 126
 > products, then hand off to WhatsApp. Tell me what that needs on the server
 > side before you build it; I know the API key must not sit in the app.
+>
+> Because it is going to both stores with push, tell me in the plan:
+>
+> - which framework, and why (I expect Expo unless you have a reason against it)
+> - how push is sent — what server piece is needed, and what I have to register
+>   with Google and Apple
+> - what the two store accounts cost and what each review will want from me
+> - whether a catalogue app risks rejection for being too thin, and what we put
+>   in it so that it is not
 >
 > Start by reading the README and the data files, then come back with a plan.
 > Do not write app code until we have agreed on it.
@@ -90,21 +105,43 @@ up a bill.
 
 ---
 
-## Worth deciding: do you need a native app at all?
+## Decided: native, both stores, with push
 
-The website is now installable — it goes on the home screen, opens without
-browser chrome, and works offline. That is already an app for most purposes, and
-it is one codebase.
+The PWA stays as it is — it costs nothing to keep and it serves anyone who
+finds the site on a phone. The native app is for the store listing and for
+push, which is exactly what a PWA cannot do.
 
-A native app is worth building when you specifically want:
+### What that adds, beyond writing the app
 
-- a listing on the Play Store and App Store, where people search for you
-- push notifications
-- something the web genuinely cannot do
+**Two accounts, and they are not instant.**
 
-It costs a separate codebase, a Google Play account (about ₹2,000 once) and an
-Apple developer account (about $99 a year), plus review time on every update.
+| | Cost | Note |
+| --- | --- | --- |
+| Google Play Console | about $25, once | Identity verification; allow a few days |
+| Apple Developer Program | about $99 a year | Slower to approve, and it lapses if unpaid |
 
-If what you want is the store listing, build it. If what you want is "an app on
-the phone", you have one. Either way the brief above holds — the data and the
-photographs are the asset, and they should only ever live in one place.
+Verify both before planning a launch date — these are the current figures but
+they are Apple's and Google's to change.
+
+**Push needs a server, not just app code.** The app can receive a notification;
+something has to send it. Expo's push service is the short path and it is free,
+but either way there must be a place that holds the device tokens and triggers
+the send. You already have a Cloudflare Worker in the plan for the AI
+assistant's API key — the same Worker can do this, and then there is one server
+piece rather than two.
+
+Also worth settling early: **what a notification is actually for.** "New range
+added" and "your quote is ready" are worth a push. Anything more frequent and
+people turn them off, and a notification permission is only asked once.
+
+**The real risk is Apple's review, not the code.** Apple rejects apps that are a
+website in a wrapper — the guideline is 4.2, Minimum Functionality, and a plain
+product catalogue is squarely the kind of thing it is aimed at. This is worth
+planning for rather than discovering after the build.
+
+What answers it is already in your plan, which is lucky: the AI assistant that
+helps a buyer choose, the offline catalogue, and push. Those are native reasons
+to exist. Say so in the review notes when you submit, and make sure the app
+opens on something that is not simply the website's home page.
+
+Ask the new chat to design for that from the start.
