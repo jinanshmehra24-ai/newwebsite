@@ -25,9 +25,27 @@ npm run dev      # http://localhost:5173
 | `npm run sitemap` | Rewrites `public/sitemap.xml` from the catalogue data |
 
 > The scripts call `node ./node_modules/...` directly rather than the usual
-> shorthand. The `&` in this folder's name breaks npm's Windows `.cmd` shims.
+> shorthand. The `&` in this folder's name breaks npm's Windows `.cmd` shims —
+> a shortened `build` script has already broken local builds once and had to be
+> put back. The long form works on Windows and on the Linux build server alike,
+> so leave it alone.
 
 **Stack:** React 19, TypeScript, Vite, Tailwind CSS v4, React Router.
+
+---
+
+## Deployment
+
+Cloudflare Pages, configured by `wrangler.toml`:
+
+```toml
+name = "newwebsite-wkk"
+pages_build_output_dir = "dist"
+```
+
+Pages runs `npm run build` and serves `dist/`. Pushing to `main` is the deploy —
+there is no separate step. Cloudflare refuses any single file over 25 MiB, which
+is why the catalogue PDFs are kept out of the repository (see below).
 
 ---
 
@@ -55,29 +73,79 @@ public/
   editorial/          Hero photographs and section imagery
 ```
 
-Source photography and catalogue PDFs sit in the untracked folders at the
-project root (`gift sets/`, `bags/`, `key chains photo/`, `mobile stands/`,
-`paper weight/`, `pen stand/`, `home page hero/`, `resources/`, and the pen
-catalogue folders). Nothing in `src/` reads them — they are the originals the
-files in `public/` were made from.
+A few components worth knowing by name:
+
+| Component | What it is |
+| --- | --- |
+| `HeroCarousel` | The rotating home hero, and its controls |
+| `ProductCard` / `CategoryCard` | The full-size cards, used in the catalogue grids and on the home page |
+| `CategoryTile` | The compact range tile used on `/categories` |
+| `SectionIndex` | The numbered section marker — "1 Product Range" |
+| `Photo` | An `img` that fades up once decoded, cache included |
+| `WhatsAppButton` | The floating button, and the note that comes out of it |
+| `ui.tsx` | `ButtonLink`, `Button`, `SectionHeading` and the button variants |
+
+### The photographs are in the repository
+
+Both the web-ready images and the originals they were made from are committed.
+A clone gets everything needed to build and to re-make any image:
+
+| Folder | Files |
+| --- | --- |
+| `public/products/` | 252 — every product at 600px and 1200px |
+| `public/editorial/` | 26 — hero and section imagery |
+| `PERFECT/` | 103 — the held-back metal pen range |
+| `2026 elite pens'/` | 24 |
+| `Supreme Pen Catalogue . Chandra Co/` | 20 |
+| `gift sets/` | 11 |
+| `key chains photo/` | 6 |
+| `bags/` | 5 |
+| `mobile stands/` | 5 |
+| `home page hero/` | 4 |
+| `resources/` | 4 |
+| `paper weight/` | 2 |
+| `pen stand/` | 1 |
+
+Nothing in `src/` reads the source folders — they are the originals, kept so the
+`public/` files can be rebuilt without hunting for the photographs again.
+
+**PDFs are the one exception.** `.gitignore` excludes `*.pdf`, because the metal
+pen catalogue is larger than the 25 MiB file limit Cloudflare Pages enforces.
+`Metal Pen Catelouge 2026-27.pdf` and `FRENCH PENS pdf.pdf` therefore live only
+on the original machine — keep a copy somewhere else.
 
 ---
 
 ## The catalogue
 
-124 products across nine ranges:
+126 products across nine ranges:
 
-| Range | Count |
-| --- | --- |
-| Executive Pens | 42 |
-| Elite Pens | 24 |
-| Supreme Pens | 20 |
-| Gift Sets | 11 |
-| Prime Pens | 9 |
-| Keychains | 6 |
-| Bags | 4 |
-| Mobile Stands | 4 |
-| Desk Accessories | 4 |
+| Range | Slug | Count |
+| --- | --- | --- |
+| Metal Executive Pens | `executive-pens` | 42 |
+| Plastic Elite Pens | `elite-pens` | 25 |
+| Plastic Supreme Pens | `supreme-pens` | 20 |
+| Gift Sets | `gift-sets` | 11 |
+| Plastic Prime Pens | `prime-pens` | 9 |
+| Keychains | `keychains` | 6 |
+| Bags | `bags` | 5 |
+| Mobile Stands | `mobile-stands` | 4 |
+| Desk Accessories | `desk-accessories` | 4 |
+
+The slugs and the names are deliberately out of step: the names gained "Metal"
+and "Plastic" so a buyer can tell the ranges apart at a glance, and the slugs
+stayed as they were because they appear in every product row, in the sitemap and
+in any link already shared.
+
+### Finding a range
+
+`/categories` shows all nine at once — a square of the photograph, the name and
+a count — rather than nine full cards down a four-thousand-pixel page. The
+search above them reads more than each range's own copy: the names and types of
+all 126 products are folded in, so "backpack" and "jute" find Bags,
+"paperweight" finds Desk Accessories, and "gel" finds Elite and Prime. Without
+that, a buyer searching for the thing they want gets nothing, because the word
+lives on the product and not on the range holding it.
 
 ### Adding a product
 
@@ -96,10 +164,11 @@ files in `public/` were made from.
 **Names are the product type only** — "Metal Keychain", "Gift Set", "Metal Pen".
 Model numbers belong in `sku`, never in the name.
 
-**SKUs are unique across the whole catalogue.** Executive and Prime carry the
-manufacturer's own model numbers (`26088`, `FR-26003`); the rest are prefixed by
-range (`EL-`, `SP-`, `GS-`, `BG-`, `KC-`, `MS-`, `DA-`). The Prime range is
-prefixed because the metal range already has a `26093` and Prime has `26093A`.
+**SKUs are unique across the whole catalogue.** The Executive range carries the
+manufacturer's bare model numbers (`26051`, `26088`); every other range is
+prefixed — `EL-`, `SP-`, `PR-`, `GS-`, `BG-`, `KC-`, `MS-`, `DA-`. Prime is
+prefixed rather than bare because the Executive range already has a `26093` and
+Prime has `26093A`.
 
 ### Adding a range
 
@@ -144,6 +213,11 @@ and that line has to stay accurate if the photographs change.
 
 ## The enquiry flow
 
+Every page carries WhatsApp in at least two places, and most in three or four:
+the floating button, the footer, and — on the seven pages that end with
+`CTASection` — a "Chat on WhatsApp" button ahead of the catalogue and the quote
+form, because that is how most enquiries actually arrive.
+
 **Product page → WhatsApp.** `ProductEnquiry` asks for one thing, quantity, and
 writes it into a WhatsApp message with the product name and SKU:
 
@@ -162,6 +236,18 @@ The quick-pick figures are derived from the product's own `moq`, not fixed —
 offering 100 pieces of a pen that ships in thousands invites an enquiry that has
 to be corrected.
 
+**The floating button and its note.** `WhatsAppButton` appears 700ms after load
+on every page. It waited for 600px of scrolling once, which meant it was missing
+from every short page and absent on arrival everywhere else — a way to reach
+someone is not a reward for scrolling.
+
+Out of it, twice a visit, comes a note saying the catalogue is a part of what
+the business holds rather than all of it. Fourteen seconds after arrival, nine
+seconds on screen, once more eighty-five seconds later, then never again for
+that visit. The count lives in `sessionStorage` *and* in a module variable,
+because storage throws outright in a locked-down browser and the cap has to hold
+there too. Closing the note ends it for the session.
+
 **Forms → email.** `submitEnquiry.ts` posts to FormSubmit. Two things are still
 outstanding there:
 
@@ -178,17 +264,51 @@ that fails them is reported as successful and silently dropped.
 
 ## Design rules worth keeping
 
-- **Tokens live in `src/index.css`** under `@theme`. Ink, paper, line, muted, and
-  the brand gold. `.accent` is a shade darker than the logo's gold on purpose:
-  the brand value measures 4.26:1 on the paper ground and small text needs 4.5.
+**Tokens live in `src/index.css`** under `@theme`. The palette was rebuilt to
+match a reference site the owner chose. Its secondary grey is the one value
+taken off the source: `#777582` measures 4.29:1 on this ground, under the 4.5
+small text has to clear, so it sits four steps darker.
+
+| Token | Value | Used for |
+| --- | --- | --- |
+| `paper` | `#f9f9f9` | The page ground |
+| `ink` | `#312e41` | Body copy and headings |
+| `deep` | `#1e1b2e` | Whole dark sections; `deeper` for cards on them |
+| `muted` | `#706e7b` | Secondary text on light — 4.74:1 |
+| `dim` | `#abaab2` | Secondary text on dark — 7.29:1 |
+| `lime-400` | `#e2f273` | The one raised voice; filled buttons, numeral badges |
+| `violet-500` | `#695bc4` | The same job on light grounds — 5.12:1 |
+| `whatsapp` | `#25d366` | Only for WhatsApp actions |
+
+- **The violet never goes on the dark sections** (3.1:1 there) and the lime never
+  carries small text on the light ones. Each has one ground it belongs to.
+- **Text on the WhatsApp green is the deep indigo, not white.** White on that
+  green measures 1.98:1 — the mistake most sites make with it. The indigo reads
+  8.5.
 - **Every piece of text must clear WCAG AA** — 4.5:1 normal, 3:1 large. This has
-  caught real bugs twice, including a button on the dark band that was styled for
-  a light one and came out at 2.9:1 with an invisible border.
-- **Headings are uppercase, light weight, letterspaced**, with tracking easing
-  off as size grows. Letterspacing that flatters a small label pulls a large line
-  apart.
-- **Cards have no frame.** The photograph sits on `bg-paper` and the name reads
-  underneath it.
+  caught real bugs more than once, including a button on the dark band styled for
+  a light one that came out at 2.9:1 with an invisible border.
+
+**Type.** Manrope for everything read; Archivo, held wide and heavy, for
+headings. The reference sets its display type in Integral CF, which is a
+licensed retail family that cannot be embedded here — Archivo at the top of its
+width axis is the nearest thing in the free libraries.
+
+- **Headings are sentence case, at the face's own spacing.** They were uppercase
+  and letterspaced once, and so were the product names, buttons, captions and
+  navigation. When every line on a page is shouting, none of them is. Uppercase
+  is now spent on the small eyebrow label and nothing else.
+- **The width axis narrows to 100 below 640px.** An expanded heavy grotesque at
+  35px fits about fourteen characters to a line on a 375px screen, so every
+  headline ran wall to wall. Narrowing buys roughly a sixth more characters at
+  the same type size. This is the whole reason a variable face was chosen.
+
+**Layout.**
+
+- **16px corners on anything boxed, 8px on controls.** The site was square before
+  the palette changed; softening it is most of what separates the two looks.
+- **`.reveal` resolves out of a blur** — six pixels over 0.65s alongside the lift
+  and fade, and off entirely under `prefers-reduced-motion`.
 - **The hero is sized by width, never by viewport height.** With `object-cover` a
   short wide window crops more, and a `vh` height — or a `max-height`, which is
   the same trap — cut the pen tips off on large screens. The frame is 7:4 from
@@ -196,6 +316,13 @@ that fails them is reported as successful and silently dropped.
 - **Each hero slide carries its own crop position.** The pen photograph was
   widened to 7:4 in the file itself, because its pens stand the full height of
   the shot and no crop showed a whole one.
+- **Nothing sits on the hero photograph below 640px.** The range label, the slide
+  markers and the two links all move off it — a gift box is photographed centred,
+  so anything floating in that frame covers the thing it is advertising. From
+  640px up they go back on, where the framing leaves room.
+- **Standalone links and buttons clear 24px in both directions.** The marks stay
+  small; the padding around them does the work. This has had to be restored once
+  after a revert took it out.
 
 ---
 
@@ -210,9 +337,13 @@ otherwise overwrite it, leaving a missing page titled "Product" and open to
 indexing.
 
 `public/sitemap.xml` is regenerated on every build by `scripts/sitemap.mjs`,
-which reads the product rows, the active categories and the guide slugs. It was
-written by hand once and by the time anyone looked again it listed twenty-five
-withdrawn products and none of the new ranges.
+which reads the product rows, the active categories and the guide slugs — 146
+URLs at present. It has been wrong twice. Written by hand, it drifted to listing
+twenty-five withdrawn products and none of the new ranges. Rewritten to read the
+data, its pattern required the category to end in `-pens`, which was true of
+every range on the day it was written and silently dropped all thirty gifting
+products afterwards. It now counts what it matched against the rows the file
+declares and fails the build on a mismatch.
 
 ---
 
@@ -229,5 +360,9 @@ withdrawn products and none of the new ranges.
   the originals are 4961px and could be re-rendered for genuinely sharper cards.
 - The metal-pen range (103 products) is built but held back — its slug is in
   `ALL_CATEGORIES` and out of `ACTIVE_CATEGORIES`.
-- Bags, diary combos and doctor gifting are named in the copy and in the home
-  page range band, but only the bags have photographs so far.
+- Diary combos and doctor gifting are named in the copy and in the home page
+  range band but have no photographs yet, so they are not ranges.
+- The wordmark is gold, and gold is now the only warm thing on an indigo and
+  lime site. An off-white or lime version for the dark sections would settle it.
+- FormSubmit is not activated — see the enquiry flow above. Until it is, the
+  contact and quote forms report success without delivering anything.
