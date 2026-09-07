@@ -1,7 +1,9 @@
 # Brief for the Chandra & Co. app
 
-Paste the block below as the first message of the new chat. Everything after it
-is context for you, not for that chat.
+The working copy of this lives in the app folder, at
+`C:\Users\jinanshh\Desktop\Chandra & co App\APP-BRIEF.md`. Open a session
+there and tell it to read that file. This copy is kept here so the brief stays
+version-controlled alongside the catalogue it describes.
 
 ---
 
@@ -9,12 +11,16 @@ is context for you, not for that chat.
 
 > I want to build a **native mobile app** for Chandra & Co., a New Delhi
 > corporate gifting supplier — going on the **Google Play Store and the Apple
-> App Store**, with **push notifications**. Smooth, and with a genuinely useful
-> AI assistant in it.
+> App Store**, with **push notifications**. A proper app, not a wrapped website.
 >
 > This is decided; do not re-open it. The website is already an installable PWA,
 > and this is being built for the store listing and for push, which the PWA
 > cannot give us.
+>
+> **What the app is.** A browsable product catalogue with **prices**, a **cart**,
+> and an **AI assistant** that helps a buyer choose. This is a change from the
+> website, which shows no prices and has no cart — read the note on pricing
+> below before you design anything, because the answer is not settled.
 >
 > **All the content already exists** in another folder on this machine:
 > `C:\Users\jinanshh\Desktop\Chandra & co Website`
@@ -38,110 +44,165 @@ is context for you, not for that chat.
 > how you plan to share that data and those images between the website and the
 > app so that adding a product later means adding it in one place, not two.
 >
-> How the business works, so the app matches it: there is no cart and no
-> pricing. Price depends on quantity and branding method, so every route ends in
-> a WhatsApp conversation with the product and quantity pre-filled. Never
-> describe the products as premium or the best — the site's rule is to talk
-> about the customer's problem and their brand, never ours. And always make
+> **There is no price data anywhere yet** — `products.ts` has a `moq` field and
+> nothing else. Part of your plan must be the shape prices should take, and what
+> exactly I have to give you to fill them in.
+>
+> Two things about the business, so the app matches it. Price depends on
+> quantity and branding method, which is why the website never published a
+> number. And never describe the products as premium or the best — the rule is
+> to talk about the customer's problem and their brand, never ours. Always make
 > clear the catalogue is a part of what we stock, not all of it.
 >
 > The AI assistant should help a buyer choose — "I need 500 gifts for a dealer
 > meet, budget around ₹200 each" should get real suggestions from the actual 126
-> products, then hand off to WhatsApp. Tell me what that needs on the server
-> side before you build it; I know the API key must not sit in the app.
+> products, and be able to put them in the cart. I know the API key must not sit
+> in the app.
 >
-> Because it is going to both stores with push, tell me in the plan:
+> Come back with a plan covering:
 >
+> - how the data and photographs are shared with the website, one copy only
+> - **what a price is** here — see the pricing note below and give me your
+>   recommendation, not a menu
+> - **what the cart does at the end** — a quote request, or a real payment
 > - which framework, and why (I expect Expo unless you have a reason against it)
-> - how push is sent — what server piece is needed, and what I have to register
->   with Google and Apple
-> - what the two store accounts cost and what each review will want from me
-> - whether a catalogue app risks rejection for being too thin, and what we put
->   in it so that it is not
+> - how push is sent, and what I must register with Google and Apple
+> - what the two store accounts cost and what each review will want
+> - what we put in the app so Apple does not reject it as too thin
 >
-> Start by reading the README and the data files, then come back with a plan.
-> Do not write app code until we have agreed on it.
+> Read the README and the data files first. Do not write app code until we have
+> agreed on the plan.
 
 ---
 
-## Three things to know before that chat
+## The two questions to settle first
 
-### 1. The new folder will not see this one
+Everything else in the build is ordinary work. These two decide what is being
+built at all, and both are the owner's calls, not the developer's.
 
-Claude Code only reads the folder you open it in. The prompt gives the absolute
-path, and the session will ask permission to read it — say yes. If it cannot,
-the alternative is to copy `src/data/`, `src/config/site.ts` and
-`public/products/` across, and then you own two copies of everything.
+### 1. What is a price here?
 
-### 2. One copy of the data, or it will drift
+The website publishes none, and that is not shyness — the number genuinely
+changes with quantity and with branding method. A single figure next to a pen
+will be wrong for most of the people reading it.
 
-This is the decision that matters most and the one to settle before any code is
-written. 126 products and 252 images kept in two places stay identical for about
-a month. Then a product is added on one side, a price rule changes on the other,
-and the app shows a catalogue the website does not.
+There is also nothing to show yet: `products.ts` has no price field. Whatever is
+chosen, 126 numbers have to come from the business.
 
-Best arrangement is one repository with the data and images shared:
+The shape that fits how corporate gifting is actually sold is **quantity slabs**:
 
-```
-data/       products, categories, content   ← website and app both read this
-assets/     the product photographs         ← both
-web/        the current site
-app/        the new app
-```
+| Quantity | Price each |
+| --- | --- |
+| 50 – 99 | ₹— |
+| 100 – 499 | ₹— |
+| 500 + | ₹— |
 
-Ask the new chat to propose this before it starts building.
+It matches the `moq` already in the data, it is honest about why the number
+moves, and a buyer sees immediately that ordering more costs less each. Branding
+method can ride on top as a stated addition — laser, screen and UV do not cost
+the same — rather than being hidden in one blended figure.
 
-### 3. The API key cannot live in the app
+Two things to decide with it:
 
-Anything shipped inside a mobile app can be read out of it — an API key in the
-bundle is a key anyone can extract and spend on your account. The assistant has
-to call Claude through a small server you control, which holds the key and
-forwards the request.
+- **GST inclusive or exclusive.** A B2B buyer expects exclusive, with the tax
+  shown. Say which, on every screen that shows a number.
+- **Whether the website starts showing prices too.** If the app does and the
+  site does not, the same product has two stories. That is a business decision;
+  just do not let it happen by accident.
 
-You are already on Cloudflare, so a Cloudflare Worker is the natural place:
-the app calls your Worker, the Worker calls Claude, the key never leaves it.
-That Worker is also where you would keep a rate limit, so one person cannot run
-up a bill.
+### 2. What happens when the cart is full?
+
+This is the fork that decides the size of the whole project.
+
+**A quote basket** — the buyer collects products and quantities, and the app
+sends the whole list as one enquiry, to WhatsApp or as an order for the team to
+price and confirm. This is how the business already works, it needs no payment
+gateway, no invoicing, no refunds policy, and it can be built now.
+
+**A real checkout** — the buyer pays in the app. That brings a payment gateway
+(Razorpay is the usual choice in India), GST invoices, order status and
+tracking, a cancellation and refund policy, and a support path when something
+goes wrong. Both stores will want a privacy policy, and if there are user
+accounts Apple requires in-app account deletion.
+
+One useful fact: Apple's 30% commission applies to digital goods, not physical
+ones. A gifting order is physical, so an ordinary payment gateway is allowed and
+expected — that is not the obstacle. The obstacle is everything a real order
+needs behind it.
+
+**Recommendation: build the quote basket first.** It is the honest version of
+how the business sells today, it is a fraction of the work, and it does not stop
+you adding payment later once you know people are using it.
 
 ---
 
-## Decided: native, both stores, with push
+## What a proper app of this kind should have
 
-The PWA stays as it is — it costs nothing to keep and it serves anyone who
-finds the site on a phone. The native app is for the store listing and for
-push, which is exactly what a PWA cannot do.
+Beyond the catalogue, the prices and the cart, these are worth building. The
+first four are what stop Apple reading the app as a website in a wrapper.
 
-### What that adds, beyond writing the app
+- **An AI assistant that can actually act** — not a chat box bolted on. It
+  should search the real 126 products, respect budget and quantity, and add what
+  it suggests to the cart.
+- **The catalogue offline.** A buyer on a client's floor with no signal can
+  still show the range. This is the clearest thing a website cannot do.
+- **Saved products and a saved cart**, surviving reinstall if there is a login.
+- **Enquiry history, and reorder** — most corporate gifting is repeat business,
+  and "order what we did last Diwali" should be one tap.
+- **Colour variants as real data.** Seventeen product descriptions mention
+  colour ranges but no colours are stored as data. Picking a colour should be a
+  choice in the app, not a sentence to read.
+- **Filters worth having**: by range, by budget, by minimum order, by branding
+  method.
+- **Share a product** — a buyer forwards it to whoever signs off. Make that one
+  tap with a decent preview.
+- **Your logo on the product**, if you ever have artwork to upload. This is the
+  single feature that would make the app genuinely worth installing, and it is
+  worth asking the new session what it would take.
 
-**Two accounts, and they are not instant.**
+---
+
+## Decided already, do not re-open
+
+**Native, both stores, push.** The PWA stays as it is and costs nothing to keep.
+
+**Two accounts, and they take time.**
 
 | | Cost | Note |
 | --- | --- | --- |
 | Google Play Console | about $25, once | Identity verification; allow a few days |
 | Apple Developer Program | about $99 a year | Slower to approve, and it lapses if unpaid |
 
-Verify both before planning a launch date — these are the current figures but
-they are Apple's and Google's to change.
+Verify both before promising a launch date — these are Apple's and Google's
+figures to change.
 
-**Push needs a server, not just app code.** The app can receive a notification;
-something has to send it. Expo's push service is the short path and it is free,
-but either way there must be a place that holds the device tokens and triggers
-the send. You already have a Cloudflare Worker in the plan for the AI
-assistant's API key — the same Worker can do this, and then there is one server
-piece rather than two.
+**One copy of the data, or it drifts.** 126 products and 252 images kept in two
+places stay identical for about a month. Then a product is added on one side and
+the app shows a catalogue the website does not. One repository, data and images
+shared:
 
-Also worth settling early: **what a notification is actually for.** "New range
-added" and "your quote is ready" are worth a push. Anything more frequent and
-people turn them off, and a notification permission is only asked once.
+```
+data/       products, categories, content, prices   ← website and app both read this
+assets/     the product photographs                 ← both
+web/        the current site
+app/        the new app
+```
 
-**The real risk is Apple's review, not the code.** Apple rejects apps that are a
-website in a wrapper — the guideline is 4.2, Minimum Functionality, and a plain
-product catalogue is squarely the kind of thing it is aimed at. This is worth
-planning for rather than discovering after the build.
+**The API key cannot live in the app.** Anything shipped inside an app can be
+read out of it. The assistant must call Claude through a small server you
+control. You are already on Cloudflare, so a Worker is the natural place — and
+the same Worker can hold the push tokens and send notifications, so there is one
+server piece rather than two. Put a rate limit on it, so one person cannot run
+up a bill.
 
-What answers it is already in your plan, which is lucky: the AI assistant that
-helps a buyer choose, the offline catalogue, and push. Those are native reasons
-to exist. Say so in the review notes when you submit, and make sure the app
-opens on something that is not simply the website's home page.
+**Push needs something worth pushing.** "New range added" and "your quote is
+ready" earn a notification. More than that and people turn them off — and the
+permission is only asked once.
 
-Ask the new chat to design for that from the start.
+**Apple's review is the real risk, not the code.** Apple rejects apps that are a
+website in a wrapper, under guideline 4.2, Minimum Functionality, and a plain
+product catalogue is exactly what that is aimed at. The answer is already in the
+plan — the assistant, the offline catalogue, the cart and push are native
+reasons to exist — but design for it from the start, say so plainly in the
+review notes, and do not have the app open on something that looks like the
+website's home page.
